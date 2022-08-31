@@ -12,10 +12,8 @@ import static com.game.JSONParser.getStringArray;
 public class GameClient {
 
     public static void main(String[] args) throws IOException {
-
         String currentLocation = "foyer";
         System.out.println("Current location is " + currentLocation);
-
         JSONObject jsonObjectCommand = JSONParser.ReadJSON("command.json");
         JSONObject jsonObjectLocation = JSONParser.ReadJSON("location.json");
 
