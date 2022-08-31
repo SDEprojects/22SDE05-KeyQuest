@@ -67,5 +67,19 @@
     "shoe",
     "ball",
     "key"
+  ],
+  "take": [
+    "cucumber",
+    "drumstick",
+    "shoe",
+    "ball",
+    "key"
+  ],
+  "get": [
+    "cucumber",
+    "drumstick",
+    "shoe",
+    "ball",
+    "key"
   ]
 }

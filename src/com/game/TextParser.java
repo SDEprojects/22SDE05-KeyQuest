@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import java.io.*;
+import java.util.Arrays;
 import java.util.Set;
 
 public class TextParser {
@@ -21,6 +22,17 @@ public class TextParser {
             phrase = updatedParsedText.split("\\s+");
         }
         return phrase;
+    }
+
+    public static String[] getStringArray(JSONArray jsonArray) {
+        if (jsonArray == null) {
+            return new String[0];
+        }
+        String[] array = new String[jsonArray.length()];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = jsonArray.optString(i);
+        }
+        return array;
     }
 
     public static void main(String[] args) throws IOException {
@@ -58,6 +70,7 @@ public class TextParser {
 
         boolean isValidVerb = false;
         boolean isValidLocation = false;
+        boolean isValidItem = false;
 
         for (int i = 0; i < phrase.length; i++) {
             try {
@@ -72,23 +85,26 @@ public class TextParser {
         System.out.println(isValidLocation);
 
         if (isValidVerb && isValidLocation) {
-            JSONArray nextCommands = jsonObjectCommand.getJSONArray(phrase[0]);
-            JSONArray nextLocations = jsonObjectLocation.getJSONArray(currentLocation);
-            for (Object nextLocation : nextLocations) {
-                for (Object value : nextCommands) {
-                    if (phrase[1].equals(value.toString()) && phrase[1].equals(nextLocation.toString()) && !phrase[1].equals(currentLocation)) {
-                        currentLocation = (String) nextLocation;
-                        System.out.println("New location: " + currentLocation);
-                        break;
-                    } else if (phrase[1].equals(currentLocation)) {
-                        System.out.println("Already in " + phrase[1]);
-                        break;
-                    } else if (!phrase[1].equals(nextLocation.toString())) {
-                        System.out.println("Cannot " + phrase[0] + ": " + currentLocation + "--->" + phrase[1]);
-                        break;
-                    }
+            JSONArray nextCommandsJsonArray = jsonObjectCommand.getJSONArray(phrase[0]);
+            JSONArray nextLocationsJsonArray = jsonObjectLocation.getJSONArray(currentLocation);
+            String[] nextCommands = getStringArray(nextCommandsJsonArray);
+            String[] nextLocations = getStringArray(nextLocationsJsonArray);
+
+            for (String nextLocation : nextLocations) {
+                if (Arrays.asList(nextLocations).contains(phrase[1]) && (Arrays.asList(nextCommands).contains(phrase[1]))) {
+                    currentLocation = phrase[1];
+                    System.out.println("New location: " + currentLocation);
+                    break;
+                } else if (phrase[1].equals(currentLocation)) {
+                    System.out.println("Already in " + phrase[1]);
+                    break;
+                } else if (!phrase[1].equals(nextLocation)) {
+                    System.out.println("Cannot " + phrase[0] + ": " + currentLocation + " ---> " + phrase[1]);
+                    break;
+                } else if (!Arrays.asList(nextCommands).contains(phrase[1])) {
+                    System.out.println("Cannot " + phrase[0] + " " + phrase[1]);
+                    break;
                 }
-                break;
             }
         } else {
             System.out.println("Please try another command");
