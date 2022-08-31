@@ -7,7 +7,6 @@ import java.io.Reader;
 
 public class TextParser {
     public static String[] parse() throws IOException {
-
         String[] phrase;
         try (
                 Reader input = new InputStreamReader(System.in);
