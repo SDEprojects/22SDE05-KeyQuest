@@ -9,6 +9,12 @@
     "loft",
     "bathroom"
   ],
+  "living": [
+    "foyer",
+    "kitchen",
+    "loft",
+    "bathroom"
+  ],
   "loft": [
     "kitchen",
     "living",
