@@ -1,0 +1,28 @@
+{
+  "foyer": [
+    "kitchen",
+    "living"
+  ],
+  "kitchen": [
+    "foyer",
+    "living",
+    "loft",
+    "bathroom"
+  ],
+  "loft": [
+    "kitchen",
+    "living",
+    "garage"
+  ],
+  "bathroom": [
+    "living",
+    "walkincloset"
+  ],
+  "walkincloset": [
+    "bathroom"
+  ],
+  "garage": [
+    "loft",
+    "garden"
+  ]
+}
