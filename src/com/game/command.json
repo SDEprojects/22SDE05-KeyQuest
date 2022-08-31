@@ -29,6 +29,16 @@
     "garage",
     "garden"
   ],
+  "walk": [
+    "foyer",
+    "kitchen",
+    "living",
+    "loft",
+    "bathroom",
+    "walkincloset",
+    "garage",
+    "garden"
+  ],
   "jump": [
     "foyer",
     "kitchen",
@@ -61,7 +71,28 @@
     "ball",
     "key"
   ],
+  "collect": [
+    "cucumber",
+    "drumstick",
+    "shoe",
+    "ball",
+    "key"
+  ],
   "grab": [
+    "cucumber",
+    "drumstick",
+    "shoe",
+    "ball",
+    "key"
+  ],
+  "take": [
+    "cucumber",
+    "drumstick",
+    "shoe",
+    "ball",
+    "key"
+  ],
+  "get": [
     "cucumber",
     "drumstick",
     "shoe",
