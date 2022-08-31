@@ -5,6 +5,7 @@ import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import java.io.*;
+import java.util.Set;
 
 public class TextParser {
     public static String[] parse() throws IOException {
@@ -45,8 +46,12 @@ public class TextParser {
         JSONTokener jsonLocation = new JSONTokener(inputStreamLocation);
         JSONObject jsonObjectLocation = new JSONObject(jsonLocation);
 
-        String[] phrase = TextParser.parse();
+        Set<String> keysCommand = jsonObjectCommand.keySet();
+        System.out.println("List of available commands: " + keysCommand);
+        Set<String> keysLocation = jsonObjectLocation.keySet();
+        System.out.println("List of available locations: " + keysLocation);
 
+        String[] phrase = TextParser.parse();
         for (String s : phrase) {
             System.out.println(s);
         }
@@ -62,6 +67,7 @@ public class TextParser {
                 throw new RuntimeException("Command not recognized");
             }
         }
+
         System.out.println(isValidVerb);
         System.out.println(isValidLocation);
 
