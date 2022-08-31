@@ -29,6 +29,16 @@
     "garage",
     "garden"
   ],
+  "walk": [
+    "foyer",
+    "kitchen",
+    "living",
+    "loft",
+    "bathroom",
+    "walkincloset",
+    "garage",
+    "garden"
+  ],
   "jump": [
     "foyer",
     "kitchen",
