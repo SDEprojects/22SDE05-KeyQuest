@@ -16,8 +16,8 @@ public class GameClient {
         String currentLocation = "foyer";
         String[] phrase;
 
-        JSONObject jsonObjectCommand = JSONParser.ReadJSON("command.json");
-        JSONObject jsonObjectLocation = JSONParser.ReadJSON("location.json");
+        JSONObject jsonObjectCommand = JSONParser.ReadJSON("../resources/command.json");
+        JSONObject jsonObjectLocation = JSONParser.ReadJSON("../resources/location.json");
 
         while (true) {
             String firstCommand = GameManager.start();
