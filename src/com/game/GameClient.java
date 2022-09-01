@@ -12,7 +12,7 @@ import static com.game.JSONParser.getStringArray;
 public class GameClient {
 
     public static void main(String[] args) throws InterruptedException {
-//        TitlePage.title();
+        TitlePage.title();
 
         String currentLocation = "foyer";
         String[] phrase;
