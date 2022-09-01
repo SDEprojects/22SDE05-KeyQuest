@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.util.Scanner;
 
 public class TextParser {
     public static String[] parse() throws IOException {
@@ -17,6 +18,15 @@ public class TextParser {
             String updatedParsedText = parsedText.replaceAll("[^\\w\\s]", "");
             phrase = updatedParsedText.split("\\s+");
         }
+        return phrase;
+    }
+
+    public static String[] read() {
+        String[] phrase;
+        Scanner scanner = new Scanner(System.in);
+        String parsedText = scanner.nextLine();
+        String updatedParsedText = parsedText.replaceAll("[^\\w\\s]", "");
+        phrase = updatedParsedText.split("\\s+");
         return phrase;
     }
 }
