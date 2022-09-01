@@ -48,7 +48,6 @@ public class GameClient {
                     }
 
                     if (isValidVerb && isValidLocation) {
-
                         JSONArray nextCommandsJsonArray = jsonObjectCommand.getJSONArray(phrase[0]);
                         JSONArray nextLocationsJsonArray = jsonObjectLocation.getJSONArray(currentLocation);
                         String[] nextCommands = getStringArray(nextCommandsJsonArray);
@@ -71,14 +70,16 @@ public class GameClient {
                         }
                     } else if (Objects.equals(phrase[0], "quit")) {
                         String confirmation = GameManager.confirmQuit();
-                        if(Objects.equals(confirmation, "yes")) {
+                        if (Objects.equals(confirmation, "yes")) {
                             GameManager.quit();
                             break;
+                        } else if (Objects.equals(confirmation, "no")) {
+                            System.out.println(currentLocation);
                         }
                     } else {
                         System.out.println("Please try another command");
                     }
-                } while (!Objects.equals(phrase[0], "quit"));
+                } while (!Objects.equals(phrase[0], "quit")); break;
             }
         }
     }
