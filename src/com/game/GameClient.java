@@ -13,7 +13,6 @@ public class GameClient {
 
     public static void main(String[] args) throws InterruptedException {
         TitlePage.title();
-
         String currentLocation = "foyer";
         String[] phrase;
 
@@ -46,13 +45,11 @@ public class GameClient {
                             isValidVerb = jsonObjectCommand.has(phrase[0]);
                         }
                     }
-
                     if (isValidVerb && isValidLocation) {
                         JSONArray nextCommandsJsonArray = jsonObjectCommand.getJSONArray(phrase[0]);
                         JSONArray nextLocationsJsonArray = jsonObjectLocation.getJSONArray(currentLocation);
                         String[] nextCommands = getStringArray(nextCommandsJsonArray);
                         String[] nextLocations = getStringArray(nextLocationsJsonArray);
-
                         for (String nextLocation : nextLocations) {
                             if (Arrays.asList(nextLocations).contains(phrase[1]) && (Arrays.asList(nextCommands).contains(phrase[1]))) {
                                 currentLocation = phrase[1];
