@@ -57,14 +57,15 @@
         }
       ]
     },
-    "living Room": {
-      "name": "living Room",
+    "living": {
+      "name": "living",
       "description": "You are in the Living Room...There is a creature that meows inside",
       "items": [],
       "furniture": [
         "table",
         "sofa"
       ],
+      "door": [],
       "character": [],
       "directions": [
         {
@@ -92,11 +93,12 @@
       "furniture": [
         "cabinet"
       ],
+      "door": [],
       "character": [],
       "directions": [
         {
-          "directionName": "living room",
-          "room": "living room"
+          "directionName": "living",
+          "room": "living"
         },
         {
           "directionName": "walk-in-closet",
@@ -104,7 +106,7 @@
         }
       ]
     },
-    "walk-in-closet": {
+    "walkincloset": {
       "name": "walk-in-closet",
       "description": "You are in the closet...I wonder what can be of use in here.",
       "items": [
@@ -115,6 +117,7 @@
         "cabinet",
         "shelf"
       ],
+      "door": [],
       "character": [],
       "directions": [
         {
@@ -131,6 +134,7 @@
         "table",
         "sofa"
       ],
+      "door": [],
       "character": [],
       "directions": [
         {
@@ -138,7 +142,7 @@
           "room": "kitchen"
         },
         {
-          "directionName": "living room",
+          "directionName": "living",
           "room": "living room"
         },
         {
@@ -156,6 +160,7 @@
       "furniture": [
         "shelf"
       ],
+      "door": ["garage door"],
       "character": [],
       "directions": [
         {
@@ -169,6 +174,7 @@
       "description": "You have made it to the garden!",
       "items": [],
       "furniture": [],
+      "door": [],
       "character": [],
       "directions": [
         {
