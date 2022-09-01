@@ -32,6 +32,8 @@ public class GameClient {
                 System.out.println("List of available locations: " + keysLocation);
                 do {
                     System.out.println("Current location is " + currentLocation);
+                    JSONArray listNextLocations = jsonObjectLocation.getJSONArray(currentLocation);
+                    System.out.println("You can go to " + listNextLocations);
                     phrase = TextParser.read();
                     boolean isValidVerb = false;
                     boolean isValidLocation = false;
