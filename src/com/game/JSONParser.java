@@ -13,7 +13,7 @@ public class JSONParser {
 
         InputStream inputStream = TextParser.class.getResourceAsStream(filepath);
         if (inputStream == null) {
-            throw new NullPointerException("Cannot find a file with commands list " + filepath);
+            throw new NullPointerException("Cannot find a file " + filepath);
         }
 
         JSONTokener jsonTokener = new JSONTokener(inputStream);
