@@ -25,13 +25,14 @@ public class GameClient {
                 break;
             }
             if (Objects.equals(firstCommand, "start")) {
+                Set<String> keysCommand = JSONParser.geyKeys(jsonObjectCommand);
+                System.out.println("List of available commands: " + keysCommand);
+                Set<String> keysLocation = JSONParser.geyKeys(jsonObjectLocation);
+                System.out.println("List of available locations: " + keysLocation);
                 do {
-                    Set<String> keysCommand = JSONParser.geyKeys(jsonObjectCommand);
-                    System.out.println("List of available commands: " + keysCommand);
-                    Set<String> keysLocation = JSONParser.geyKeys(jsonObjectLocation);
-                    System.out.println("List of available locations: " + keysLocation);
-
                     System.out.println("Current location is " + currentLocation);
+                    JSONArray listNextLocations = jsonObjectLocation.getJSONArray(currentLocation);
+                    System.out.println("You can go to " + listNextLocations);
                     phrase = TextParser.read();
                     boolean isValidVerb = false;
                     boolean isValidLocation = false;
@@ -70,7 +71,7 @@ public class GameClient {
                             GameManager.quit();
                             break;
                         } else if (Objects.equals(confirmation, "no")) {
-                            System.out.println(currentLocation);
+                            phrase[0] = "start";
                         }
                     } else {
                         System.out.println("Please try another command");
