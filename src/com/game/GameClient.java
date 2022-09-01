@@ -39,10 +39,10 @@ public class GameClient {
                     boolean isValidLocation = false;
 
                     for (int i = 0; i < phrase.length; i++) {
-                        if(phrase.length == 2) {
+                        if (phrase.length == 2) {
                             isValidVerb = jsonObjectCommand.has(phrase[0]);
                             isValidLocation = jsonObjectLocation.has(phrase[1]);
-                        } else if(phrase.length==1) {
+                        } else if (phrase.length == 1) {
                             isValidVerb = jsonObjectCommand.has(phrase[0]);
                         }
                     }
@@ -79,7 +79,8 @@ public class GameClient {
                     } else {
                         System.out.println("Please try another command");
                     }
-                } while (!Objects.equals(phrase[0], "quit")); break;
+                } while (!Objects.equals(phrase[0], "quit"));
+                break;
             }
         }
     }
