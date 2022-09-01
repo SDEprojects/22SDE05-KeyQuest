@@ -1,0 +1,182 @@
+{
+  "startingRoom": "foyer",
+  "endingRoom": "garden",
+  "rooms": {
+    "foyer": {
+      "name": "foyer",
+      "description": "You find yourself at the foyer, you can examine the cabinet, shelf, or hop towards the kitchen or the living room ",
+      "items": [],
+      "furniture": [
+        "cabinet",
+        "shelf"
+      ],
+      "door": [
+        "main door"
+      ],
+      "character": [],
+      "directions": [
+        {
+          "directionName": "kitchen",
+          "room": "kitchen"
+        },
+        {
+          "directionName": "living Room",
+          "room": "living Room"
+        }
+      ]
+    },
+    "kitchen": {
+      "name": "kitchen",
+      "description": "You are now inside the kitchen, here you may find some savory goods",
+      "items": [
+        "chicken drumstick",
+        "cucumber"
+      ],
+      "furniture": [
+        "cabinet",
+        "refrigerator",
+        "table",
+        "chair"
+      ],
+      "door": [
+        "cat and dog door"
+      ],
+      "character": [],
+      "directions": [
+        {
+          "directionName": "living room",
+          "room": "living Room"
+        },
+        {
+          "directionName": "loft",
+          "room": "loft"
+        },
+        {
+          "directionName": "foyer",
+          "room": "foyer"
+        }
+      ]
+    },
+    "living Room": {
+      "name": "living Room",
+      "description": "You are in the Living Room...There is a creature that meows inside",
+      "items": [],
+      "furniture": [
+        "table",
+        "sofa"
+      ],
+      "character": [],
+      "directions": [
+        {
+          "directionName": "foyer",
+          "room": "foyer"
+        },
+        {
+          "directionName": "kitchen",
+          "room": "kitchen"
+        },
+        {
+          "directionName": "loft",
+          "room": "loft"
+        },
+        {
+          "directionName": "bathroom",
+          "room": "bathroom"
+        }
+      ]
+    },
+    "bathroom": {
+      "name": "bathroom",
+      "description": "You are reached the bathroom, it smells like someone had one too many carrots!",
+      "items": [],
+      "furniture": [
+        "cabinet"
+      ],
+      "character": [],
+      "directions": [
+        {
+          "directionName": "living room",
+          "room": "living room"
+        },
+        {
+          "directionName": "walk-in-closet",
+          "room": "walk-in-closet"
+        }
+      ]
+    },
+    "walk-in-closet": {
+      "name": "walk-in-closet",
+      "description": "You are in the closet...I wonder what can be of use in here.",
+      "items": [
+        "leather shoes",
+        "ball of wool"
+      ],
+      "furniture": [
+        "cabinet",
+        "shelf"
+      ],
+      "character": [],
+      "directions": [
+        {
+          "directionName": "bathroom",
+          "room": "bathroom"
+        }
+      ]
+    },
+    "loft": {
+      "name": "loft",
+      "description": "You are inside the Loft... there is a creature that barks!",
+      "items": [],
+      "furniture": [
+        "table",
+        "sofa"
+      ],
+      "character": [],
+      "directions": [
+        {
+          "directionName": "kitchen",
+          "room": "kitchen"
+        },
+        {
+          "directionName": "living room",
+          "room": "living room"
+        },
+        {
+          "directionName": "garage",
+          "room": "garage"
+        }
+      ]
+    },
+    "garage": {
+      "name": "garage",
+      "description": "You are in the Garage. There are a lot of shiny items in here!",
+      "items": [
+        "key"
+      ],
+      "furniture": [
+        "shelf"
+      ],
+      "character": [],
+      "directions": [
+        {
+          "directionName": "garage door",
+          "room": "garden"
+        }
+      ]
+    },
+    "garden": {
+      "name": "garden",
+      "description": "You have made it to the garden!",
+      "items": [],
+      "furniture": [],
+      "character": [],
+      "directions": [
+        {
+          "directionName": "garage",
+          "room": "garage"
+        }
+      ]
+    }
+  }
+}
+

@@ -10,13 +10,13 @@ import java.util.Set;
 import static com.game.JSONParser.getStringArray;
 
 public class GameClient {
-
     public static void main(String[] args) throws InterruptedException {
-        TitlePage.title();
-        String currentLocation = "foyer";
-        String[] phrase;
         JSONObject jsonObjectCommand = JSONParser.ReadJSON("../resources/command.json");
         JSONObject jsonObjectLocation = JSONParser.ReadJSON("../resources/location.json");
+        JSONObject jsonObjectLocationStart = JSONParser.ReadJSON("../resources/locationv3.json");
+        TitlePage.title();
+        String currentLocation = jsonObjectLocationStart.getString("startingRoom");
+        String[] phrase;
 
         while (true) {
             String firstCommand = GameManager.start();
@@ -29,9 +29,14 @@ public class GameClient {
                 System.out.println("List of available commands: " + keysCommand);
                 Set<String> keysLocation = JSONParser.geyKeys(jsonObjectLocation);
                 System.out.println("List of available locations: " + keysLocation);
+                System.out.println();
                 do {
                     System.out.println("Current location is " + currentLocation);
                     JSONArray listNextLocations = jsonObjectLocation.getJSONArray(currentLocation);
+                    Location location = new Location(currentLocation);
+                    System.out.println(location.getDescription());
+                    System.out.println("List of furniture: " + Arrays.toString(location.getFurniture()));
+                    System.out.println("List of items: " + Arrays.toString(location.getItems()));
                     System.out.println("You can go to " + listNextLocations);
                     phrase = TextParser.read();
                     boolean isValidVerb = false;
