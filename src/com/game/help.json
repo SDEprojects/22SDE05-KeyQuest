@@ -1,0 +1,23 @@
+{"help": [{
+        "name": "go", "description": "Move from one room to another.", "interchange": "Interchangeable with run, move, walk, jump."},
+        {"name": "run",  "description": "Move from one room to another.", "interchange": "Interchangeable with go, move, walk, jump."},
+        {"name": "move", "description": "Move from one room to another.", "interchange": "Interchangeable with go, run, walk, jump."},
+        {"name": "walk", "description": "Move from one room to another.", "interchange": "Interchangeable with go, run, move, jump." },
+        {"name": "jump", "description": "Move from one room to another.", "interchange": "Interchangeable with go, run, move, walk." },
+        {"name": "distract", "description": "Distract the animal by throwing an item from your inventory, towards them.", "interchange": "Interchangeable with throw."},
+        {"name": "throw", "description": "Distract the animal by throwing an item from your inventory, towards them.", "interchange": "Interchangeable with distract."},
+        {"name": "eat", "description": "Eat food from your inventory.", "interchange": "Not interchangeable with any other command."},
+        {"name": "pick", "description": "Pick an item.", "interchange": "Interchangeable with collect, grab, take, get."},
+        {"name": "collect", "description": "Pick an item.", "interchange": "Interchangeable with pick, grab, take, get."},
+        {"name": "grab", "description": "Pick an item.", "interchange": "Interchangeable with collect, pick, take, get."},
+        {"name": "take", "description": "Pick an item.", "interchange": "Interchangeable with collect, pick, grab, get."},
+        {"name": "get", "description": "Pick an item.", "interchange": "Interchangeable with collect, pick, grab, take."}
+
+
+
+
+
+
+
+
+]}
