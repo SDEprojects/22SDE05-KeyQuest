@@ -79,6 +79,8 @@ public class GameClient {
                                 break;
                             }
                         }
+                    } else if (Objects.equals(phrase[0], "help")) {
+                        System.out.println("List of available commands: " + keysCommand);
                     } else if (Objects.equals(phrase[0], "quit")) {
                         String confirmation = GameManager.confirmQuit();
                         if (Objects.equals(confirmation, "yes")) {
