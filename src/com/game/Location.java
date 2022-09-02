@@ -18,7 +18,7 @@ public class Location {
     private String[] directions;
     private final String roomsKey = "rooms";
 
-    JSONObject jsonObjectLocation = JSONParser.ReadJSON("../resources/locationv3.json");
+    JSONObject jsonObjectLocation = JSONParser.ReadJSON("locationv3.json");
     JSONObject rooms = jsonObjectLocation.getJSONObject(roomsKey);
 
     public Location(String name) {
