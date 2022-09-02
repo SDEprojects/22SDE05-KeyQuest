@@ -94,7 +94,7 @@ public class GameClient {
                             phrase[0] = "start";
                         }
                     } else {
-                        System.out.println("Please try another command");
+                        System.out.println("Please try another command. Please type 'help' for more information.");
                     }
                 } while (!Objects.equals(phrase[0], "quit"));
                 break;
