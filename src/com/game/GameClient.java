@@ -6,7 +6,6 @@ import org.json.JSONObject;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Set;
-import java.util.SortedMap;
 
 import static com.game.JSONParser.getStringArray;
 
@@ -40,14 +39,13 @@ public class GameClient {
                 System.out.println("List of available locations: " + keysLocation);
                 System.out.println();
                 do {
-                    System.out.println();
-                    System.out.println("Current location is " + currentLocation);
+                    System.out.println("\nCurrent location is " + currentLocation);
                     JSONArray listNextLocations = jsonObjectLocation.getJSONArray(currentLocation);
                     Location location = new Location(currentLocation);
                     System.out.println(location.getDescription());
                     System.out.println("List of furniture: " + Arrays.toString(location.getFurniture()));
                     System.out.println("List of items: " + Arrays.toString(location.getItems()));
-                    System.out.println("You can go to " + listNextLocations);
+                    System.out.println("You can go to: " + listNextLocations);
                     phrase = TextParser.read();
                     boolean isValidVerb = false;
                     boolean isValidLocation = false;
@@ -81,10 +79,10 @@ public class GameClient {
                             }
                         }
                     } else if(Objects.equals(phrase[0], "look")) {
-                        System.out.println("You are looking at: " + Arrays.toString(location.getFurniture()));
+                        System.out.println("\nYou are looking at: " + Arrays.toString(location.getFurniture()));
                     }
                     else if (Objects.equals(phrase[0], "help")) {
-                        System.out.println("List of available commands: " + keysCommand);
+                        System.out.println("\nList of available commands: " + keysCommand);
                     } else if (Objects.equals(phrase[0], "quit")) {
                         String confirmation = GameManager.confirmQuit();
                         if (Objects.equals(confirmation, "yes")) {
