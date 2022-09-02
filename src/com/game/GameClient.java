@@ -6,6 +6,7 @@ import org.json.JSONObject;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Set;
+import java.util.SortedMap;
 
 import static com.game.JSONParser.getStringArray;
 
@@ -18,6 +19,16 @@ public class GameClient {
         TitlePage.title();
         String currentLocation = jsonObjectLocationStart.getString("startingRoom");
         String[] phrase;
+
+        JSONObject jsonObjectIntroduction = JSONParser.ReadJSON("intro.json");
+        String story = jsonObjectIntroduction.getString("story");
+        String objective = jsonObjectIntroduction.getString("objective");
+        String player = jsonObjectIntroduction.getString("player");
+        String win = jsonObjectIntroduction.getString("win");
+        System.out.println(story);
+        System.out.println(player);
+        System.out.println(objective);
+        System.out.println(win);
 
         while (true) {
             String firstCommand = GameManager.start();
