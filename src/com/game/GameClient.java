@@ -11,9 +11,9 @@ import static com.game.JSONParser.getStringArray;
 
 public class GameClient {
     public static void main(String[] args) throws InterruptedException {
-        JSONObject jsonObjectCommand = JSONParser.ReadJSON("../resources/command.json");
-        JSONObject jsonObjectLocation = JSONParser.ReadJSON("../resources/location.json");
-        JSONObject jsonObjectLocationStart = JSONParser.ReadJSON("../resources/locationv3.json");
+        JSONObject jsonObjectCommand = JSONParser.ReadJSON("command.json");
+        JSONObject jsonObjectLocation = JSONParser.ReadJSON("location.json");
+        JSONObject jsonObjectLocationStart = JSONParser.ReadJSON("locationv3.json");
 
         TitlePage.title();
         String currentLocation = jsonObjectLocationStart.getString("startingRoom");
@@ -26,12 +26,13 @@ public class GameClient {
                 break;
             }
             if (Objects.equals(firstCommand, "start")) {
-                Set<String> keysCommand = JSONParser.geyKeys(jsonObjectCommand);
+                Set<String> keysCommand = JSONParser.getKeys(jsonObjectCommand);
                 System.out.println("List of available commands: " + keysCommand);
-                Set<String> keysLocation = JSONParser.geyKeys(jsonObjectLocation);
+                Set<String> keysLocation = JSONParser.getKeys(jsonObjectLocation);
                 System.out.println("List of available locations: " + keysLocation);
                 System.out.println();
                 do {
+                    System.out.println();
                     System.out.println("Current location is " + currentLocation);
                     JSONArray listNextLocations = jsonObjectLocation.getJSONArray(currentLocation);
                     Location location = new Location(currentLocation);

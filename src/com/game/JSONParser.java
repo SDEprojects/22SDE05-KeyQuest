@@ -31,7 +31,7 @@ public class JSONParser {
         return array;
     }
 
-    public static Set<String> geyKeys(JSONObject jsonObject) {
+    public static Set<String> getKeys(JSONObject jsonObject) {
         return jsonObject.keySet();
     }
 
