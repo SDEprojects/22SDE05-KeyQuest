@@ -33,6 +33,7 @@ public class GameClient {
                 break;
             }
             if (Objects.equals(firstCommand, "start")) {
+                System.out.println("Type 'help' to get available commands, type 'look' to get list of things you are looking at.");
                 Set<String> keysCommand = JSONParser.getKeys(jsonObjectCommand);
                 System.out.println("List of available commands: " + keysCommand);
                 Set<String> keysLocation = JSONParser.getKeys(jsonObjectLocation);
@@ -79,7 +80,10 @@ public class GameClient {
                                 break;
                             }
                         }
-                    } else if (Objects.equals(phrase[0], "help")) {
+                    } else if(Objects.equals(phrase[0], "look")) {
+                        System.out.println("You are looking at: " + Arrays.toString(location.getFurniture()));
+                    }
+                    else if (Objects.equals(phrase[0], "help")) {
                         System.out.println("List of available commands: " + keysCommand);
                     } else if (Objects.equals(phrase[0], "quit")) {
                         String confirmation = GameManager.confirmQuit();
