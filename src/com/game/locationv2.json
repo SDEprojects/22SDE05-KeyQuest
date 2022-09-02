@@ -1,0 +1,148 @@
+{
+  "startingRoom": "Foyer",
+  "endingRoom": "Garden",
+  "rooms": [
+    {
+      "name": "Foyer",
+      "description": "You find yourself at the foyer, you can examine the cabinet, shelf, or hop towards the kitchen or the living room ",
+      "items": [],
+      "furniture": ["Cabinet", "Shelf"],
+      "door": ["Main Door"],
+      "character": [],
+      "directions": [
+        {
+          "directionName": "Kitchen",
+          "room": "Kitchen"
+        },
+        {
+          "directionName": "Living Room",
+          "room": "Living Room"
+        }
+      ]
+    },
+    {
+      "name": "Kitchen",
+      "description": "You are now inside the kitchen, here you may find some savory goods",
+      "items": ["Chicken Drumstick", "Cucumber"],
+      "furniture": ["Cabinet", "Refrigerator", "Table", "Chair"],
+      "door": ["Cat and Dog Door"],
+      "character": [],
+      "directions": [
+        {
+          "directionName": "Living Room",
+          "room": "Living Room"
+        },
+        {
+          "directionName": "Loft",
+          "room": "Loft"
+        },
+        {
+          "directionName": "Foyer",
+          "room": "Foyer"
+        }
+      ]
+    },
+    {
+      "name": "Living Room",
+      "description": "You are in the Living Room...There is a creature that meows inside",
+      "items": [],
+      "furniture": ["Table", "Sofa"],
+      "character": [],
+      "directions": [
+        {
+          "directionName": "Foyer",
+          "room": "Foyer"
+        },
+        {
+          "directionName": "Kitchen",
+          "room": "Kitchen"
+        },
+        {
+          "directionName": "Loft",
+          "room": "Loft"
+        },
+        {
+          "directionName": "Bathroom",
+          "room": "Bathroom"
+        }
+      ]
+    },
+    {
+      "name": "Bathroom",
+      "description": "You are reached the bathroom, it smells like someone had one too many carrots!",
+      "items": [],
+      "furniture": ["Cabinet"],
+      "character": [],
+      "directions": [
+        {
+          "directionName": "Living Room",
+          "room": "Living Room"
+        },
+        {
+          "directionName": "Walk-in-Closet",
+          "room": "Walk-in-Closet"
+        }
+      ]
+    },
+    {
+      "name": "Walk-in-closet",
+      "description": "You are in the closet...I wonder what can be of use in here.",
+      "items": ["Leather Shoes", "Ball of wool"],
+      "furniture": ["Cabinet", "Shelf"],
+      "character": [],
+      "directions": [
+        {
+          "directionName": "Bathroom",
+          "room": "Bathroom"
+        }
+      ]
+    },
+    {
+      "name": "Loft",
+      "description": "You are inside the Loft... there is a creature that barks!",
+      "items": [],
+      "furniture": ["Table", "Sofa"],
+      "character": [],
+      "directions": [
+        {
+          "directionName": "Kitchen",
+          "room": "Kitchen"
+        },
+        {
+          "directionName": "Living Room",
+          "room": "Living Room"
+        },
+        {
+          "directionName": "Garage",
+          "room": "Garage"
+        }
+      ]
+    },
+    {
+      "name": "Garage",
+      "description": "You are in the Garage. There are a lot of shiny items in here!",
+      "items": ["Key"],
+      "furniture": ["Shelf"],
+      "character": [],
+      "directions": [
+        {
+          "directionName": "Garage Door",
+          "room": "Garden"
+        }
+      ]
+    },
+    {
+      "name": "Garden",
+      "description": "You have made it to the garden!",
+      "items": [],
+      "furniture": [],
+      "character": [],
+      "directions": [
+        {
+          "directionName": "Garage",
+          "room": "Garage"
+        }
+      ]
+    }
+  ]
+}

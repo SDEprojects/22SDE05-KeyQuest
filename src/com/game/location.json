@@ -30,5 +30,8 @@
   "garage": [
     "loft",
     "garden"
+  ],
+  "garden": [
+    "garage"
   ]
 }
