@@ -20,15 +20,11 @@ public class GameClient {
         String currentLocation = jsonObjectLocationStart.getString("startingRoom");
         String[] phrase;
 
-        JSONObject jsonObjectIntroduction = JSONParser.ReadJSON("intro.json");
-        String story = jsonObjectIntroduction.getString("story");
-        String objective = jsonObjectIntroduction.getString("objective");
-        String player = jsonObjectIntroduction.getString("player");
-        String win = jsonObjectIntroduction.getString("win");
-        System.out.println(story);
-        System.out.println(player);
-        System.out.println(objective);
-        System.out.println(win);
+        Introduction introduction = new Introduction();
+        System.out.println(introduction.getStory());
+        System.out.println(introduction.getPlayer());
+        System.out.println(introduction.getObjective());
+        System.out.println(introduction.getWin());
 
         while (true) {
             String firstCommand = GameManager.start();
