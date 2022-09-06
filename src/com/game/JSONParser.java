@@ -11,7 +11,7 @@ public class JSONParser {
 
     public static JSONObject ReadJSON(String filepath) {
 
-        InputStream inputStream = TextParser.class.getResourceAsStream(filepath);
+        InputStream inputStream = JSONParser.class.getClassLoader().getResourceAsStream(filepath);
         if (inputStream == null) {
             throw new NullPointerException("Cannot find a file " + filepath);
         }
