@@ -49,7 +49,7 @@ public class GameClient {
                     phrase = TextParser.read();
                     boolean isValidVerb = false;
                     boolean isValidLocation = false;
-
+                    Screen.ClearScreen();
                     for (int i = 0; i < phrase.length; i++) {
                         if (phrase.length == 2) {
                             isValidVerb = jsonObjectCommand.has(phrase[0]);
