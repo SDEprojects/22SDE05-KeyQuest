@@ -21,4 +21,10 @@ public class GameManager {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
+
+    public static String look() {
+        System.out.println("What would you like to look at? \n>>> ");
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
+    }
 }
