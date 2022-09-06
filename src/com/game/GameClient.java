@@ -3,6 +3,7 @@ package com.game;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Set;
@@ -10,7 +11,7 @@ import java.util.Set;
 import static com.game.JSONParser.getStringArray;
 
 public class GameClient {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, IOException {
         JSONObject jsonObjectCommand = JSONParser.ReadJSON("command.json");
         JSONObject jsonObjectLocation = JSONParser.ReadJSON("location.json");
         JSONObject jsonObjectLocationStart = JSONParser.ReadJSON("locationv3.json");
@@ -27,6 +28,7 @@ public class GameClient {
 
         while (true) {
             String firstCommand = GameManager.start();
+            Screen.ClearScreen();
             if (Objects.equals(firstCommand, "quit")) {
                 GameManager.quit();
                 break;

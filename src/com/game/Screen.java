@@ -1,8 +1,9 @@
 package com.game;
 
+import java.io.IOException;
+
 public class Screen {
-    public static void ClearScreen() {
-        System.out.println("\033[H\033[2J");
-        System.out.flush();
+    public static void ClearScreen() throws IOException, InterruptedException {
+        new ProcessBuilder("cmd", "/c", "cls", "clear").inheritIO().start().waitFor();
     }
 }
