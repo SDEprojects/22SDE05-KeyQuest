@@ -9,11 +9,11 @@ import java.util.Set;
 
 public class JSONParser {
 
-    public static JSONObject ReadJSON(String filepath) {
+    public static JSONObject ReadJSON(String fileName) {
 
-        InputStream inputStream = JSONParser.class.getClassLoader().getResourceAsStream(filepath);
+        InputStream inputStream = JSONParser.class.getClassLoader().getResourceAsStream(fileName);
         if (inputStream == null) {
-            throw new NullPointerException("Cannot find a file " + filepath);
+            throw new NullPointerException("Cannot find a file " + fileName);
         }
 
         JSONTokener jsonTokener = new JSONTokener(inputStream);
