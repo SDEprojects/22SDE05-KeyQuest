@@ -83,6 +83,9 @@ public class GameClient {
                     } else if(Objects.equals(phrase[0], "look")) {
                         System.out.println("\nYou are looking at: " + Arrays.toString(location.getFurniture()));
                     }
+                    else if(Objects.equals(phrase[0], "talk")) {
+                        System.out.println("\nWho would you like to talk to: " + Arrays.toString(location.getFurniture()));
+                    }
                     else if (Objects.equals(phrase[0], "help")) {
                         System.out.println("\nList of available commands: " + keysCommand);
                     } else if (Objects.equals(phrase[0], "quit")) {
