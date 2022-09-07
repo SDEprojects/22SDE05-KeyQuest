@@ -38,10 +38,6 @@ public class JSONParser {
         return jsonObject.keySet();
     }
 
-//    public static String getIntroduction(String key) {
-//        return jsonObjectIntroduction.getString(key);
-//    }
-
     public static String getIntroductionStory() {
         return jsonObjectIntroduction.getString("story");
     }
@@ -58,14 +54,42 @@ public class JSONParser {
         return jsonObjectIntroduction.getString("win");
     }
 
-    public static String getLocationString (String room, String name) {
-        JSONObject information = rooms.getJSONObject(room);
-        return information.getString(name);
+    public static JSONObject getRooms() {
+        return rooms;
     }
 
-    public static  String[] getLocationStringArray (String room, String key) {
-        JSONObject information = rooms.getJSONObject(room);
-        JSONArray jsonArray = information.getJSONArray(key);
+    public static String getLocationDescription (String name) {
+        JSONObject information = getRooms().getJSONObject(name);
+        return information.getString("description");
+    }
+
+    public static String[] getLocationItems (String name) {
+        JSONObject information = getRooms().getJSONObject(name);
+        JSONArray jsonArray = information.getJSONArray("items");
+        return getStringArray(jsonArray);
+    }
+
+    public static String[] getLocationFurniture (String name) {
+        JSONObject information = getRooms().getJSONObject(name);
+        JSONArray jsonArray = information.getJSONArray("furniture");
+        return getStringArray(jsonArray);
+    }
+
+    public static String[] getLocationDoor (String name) {
+        JSONObject information = getRooms().getJSONObject(name);
+        JSONArray jsonArray = information.getJSONArray("door");
+        return getStringArray(jsonArray);
+    }
+
+    public static String[] getLocationCharacter (String name) {
+        JSONObject information = getRooms().getJSONObject(name);
+        JSONArray jsonArray = information.getJSONArray("character");
+        return getStringArray(jsonArray);
+    }
+
+    public static String[] getLocationDirections(String name) {
+        JSONObject information = getRooms().getJSONObject(name);
+        JSONArray jsonArray = information.getJSONArray("directions");
         return getStringArray(jsonArray);
     }
 }
