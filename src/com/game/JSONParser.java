@@ -11,6 +11,8 @@ public class JSONParser {
     static JSONObject jsonObjectIntroduction = JSONParser.ReadJSON("intro.json");
     static JSONObject jsonObjectLocation = JSONParser.ReadJSON("locationv3.json");
     static JSONObject rooms = jsonObjectLocation.getJSONObject("rooms");
+    static String startingRoom = jsonObjectLocation.getString("startingRoom");
+    static String endingRoom = jsonObjectLocation.getString("endingRoom");
 
     public static JSONObject ReadJSON(String fileName) {
 
@@ -38,6 +40,18 @@ public class JSONParser {
         return jsonObject.keySet();
     }
 
+    public static JSONObject getRooms() {
+        return rooms;
+    }
+
+    public static String getStartingRoom() {
+        return startingRoom;
+    }
+
+    public static String getEndingRoom() {
+        return endingRoom;
+    }
+
     public static String getIntroductionStory() {
         return jsonObjectIntroduction.getString("story");
     }
@@ -52,10 +66,6 @@ public class JSONParser {
 
     public static String getIntroductionWin() {
         return jsonObjectIntroduction.getString("win");
-    }
-
-    public static JSONObject getRooms() {
-        return rooms;
     }
 
     public static String getLocationDescription (String name) {
@@ -92,4 +102,6 @@ public class JSONParser {
         JSONArray jsonArray = information.getJSONArray("directions");
         return getStringArray(jsonArray);
     }
+
+
 }

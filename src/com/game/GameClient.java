@@ -8,16 +8,16 @@ import java.util.Objects;
 import java.util.Set;
 
 import static com.game.JSONParser.getStringArray;
+import static com.game.JSONParser.getStartingRoom;
 
 public class GameClient {
     public static void main(String[] args) throws InterruptedException {
         JSONObject jsonObjectCommand = JSONParser.ReadJSON("command.json");
         JSONObject jsonObjectLocation = JSONParser.ReadJSON("location.json");
-        JSONObject jsonObjectLocationStart = JSONParser.ReadJSON("locationv3.json");
 
         TitlePage.title();
         Screen.DivideScreen();
-        String currentLocation = jsonObjectLocationStart.getString("startingRoom");
+        String currentLocation = getStartingRoom();
         String[] phrase;
 
         Introduction introduction = new Introduction();
