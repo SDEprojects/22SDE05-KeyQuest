@@ -12,11 +12,10 @@ public class Screen {
                Runtime.getRuntime().exec("clear");
            }
        } catch (IOException | InterruptedException ignored) {
-
         }
     }
     public static void DivideScreen() {
-        System.out.println("\n=====================================================================================================\n");
+        System.out.println("\n==============================================================================================================\n");
     }
 
 }
