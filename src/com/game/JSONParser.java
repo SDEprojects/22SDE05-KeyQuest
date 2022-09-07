@@ -10,6 +10,8 @@ import java.util.Set;
 public class JSONParser {
     static JSONObject jsonObjectIntroduction = JSONParser.ReadJSON("intro.json");
     static JSONObject jsonObjectLocation = JSONParser.ReadJSON("locationv3.json");
+
+    static JSONObject jsonObjectCommand = JSONParser.ReadJSON("command.json");
     static JSONObject rooms = jsonObjectLocation.getJSONObject("rooms");
     static String startingRoom = jsonObjectLocation.getString("startingRoom");
     static String endingRoom = jsonObjectLocation.getString("endingRoom");
@@ -50,6 +52,10 @@ public class JSONParser {
 
     public static String getEndingRoom() {
         return endingRoom;
+    }
+
+    public static JSONObject getJsonObjectCommand() {
+        return jsonObjectCommand;
     }
 
     public static String getIntroductionStory() {
@@ -103,5 +109,16 @@ public class JSONParser {
         return getStringArray(jsonArray);
     }
 
+    public static Set<String> getKeyCommands() {
+        return JSONParser.getKeys(jsonObjectCommand);
+    }
 
+    public static String[] getCommands(String name) {
+        JSONArray jsonArray = jsonObjectCommand.getJSONArray(name);
+        return getStringArray(jsonArray);
+    }
+
+    public static Set<String> getListOfLocations() {
+        return JSONParser.getKeys(getRooms());
+    }
 }

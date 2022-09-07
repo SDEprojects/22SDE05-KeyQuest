@@ -5,16 +5,12 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 import java.util.Objects;
-import java.util.Set;
 
-import static com.game.JSONParser.getStringArray;
-import static com.game.JSONParser.getStartingRoom;
+import static com.game.JSONParser.*;
 
 public class GameClient {
     public static void main(String[] args) throws InterruptedException {
-        JSONObject jsonObjectCommand = JSONParser.ReadJSON("command.json");
-        JSONObject jsonObjectLocation = JSONParser.ReadJSON("location.json");
-
+        JSONObject jsonObjectCommand = getJsonObjectCommand();
         TitlePage.title();
         Screen.DivideScreen();
         String currentLocation = getStartingRoom();
@@ -36,21 +32,19 @@ public class GameClient {
             }
             if (Objects.equals(firstCommand, "start")) {
                 System.out.println("Type 'help' to get available commands, type 'look' to get list of things you are looking at.");
-                Set<String> keysCommand = JSONParser.getKeys(jsonObjectCommand);
-                System.out.println("List of available commands: " + keysCommand);
-                Set<String> keysLocation = JSONParser.getKeys(jsonObjectLocation);
-                System.out.println("List of available locations: " + keysLocation);
+                System.out.println("List of available commands: " + getKeyCommands());
+                System.out.println("List of available locations: " + getListOfLocations());
                 Screen.DivideScreen();
                 do {
                     System.out.println("\nCurrent location is " + currentLocation);
                     Screen.DivideScreen();
-                    JSONArray listNextLocations = jsonObjectLocation.getJSONArray(currentLocation);
                     Location location = new Location(currentLocation);
+                    String[] listNextLocations = location.getDirections();
                     System.out.println(location.getDescription());
                     System.out.println("\nList of furniture: " + Arrays.toString(location.getFurniture()));
                     System.out.println("List of items: " + Arrays.toString(location.getItems()));
                     Screen.DivideScreen();
-                    System.out.println("You can go to: " + listNextLocations);
+                    System.out.println("You can go to: " + Arrays.toString(listNextLocations));
                     Screen.DivideScreen();
                     phrase = TextParser.read();
                     boolean isValidVerb = false;
@@ -59,16 +53,15 @@ public class GameClient {
                     for (int i = 0; i < phrase.length; i++) {
                         if (phrase.length == 2) {
                             isValidVerb = jsonObjectCommand.has(phrase[0]);
-                            isValidLocation = jsonObjectLocation.has(phrase[1]);
+                            isValidLocation = getRooms().has(phrase[1]);
                         } else if (phrase.length == 1) {
                             isValidVerb = jsonObjectCommand.has(phrase[0]);
                         }
                     }
                     if (isValidVerb && isValidLocation) {
                         JSONArray nextCommandsJsonArray = jsonObjectCommand.getJSONArray(phrase[0]);
-                        JSONArray nextLocationsJsonArray = jsonObjectLocation.getJSONArray(currentLocation);
+                        String[] nextLocations = location.getDirections();
                         String[] nextCommands = getStringArray(nextCommandsJsonArray);
-                        String[] nextLocations = getStringArray(nextLocationsJsonArray);
                         for (String nextLocation : nextLocations) {
                             if (Arrays.asList(nextLocations).contains(phrase[1]) && (Arrays.asList(nextCommands).contains(phrase[1]))) {
                                 currentLocation = phrase[1];
@@ -91,7 +84,7 @@ public class GameClient {
                         System.out.println("\nWho would you like to talk to: " + Arrays.toString(location.getFurniture()));
                     }
                     else if (Objects.equals(phrase[0], "help")) {
-                        System.out.println("\nList of available commands: " + keysCommand);
+                        System.out.println("\nList of available commands: " + getKeyCommands());
                     } else if (Objects.equals(phrase[0], "quit")) {
                         String confirmation = GameManager.confirmQuit();
                         if (Objects.equals(confirmation, "yes")) {
