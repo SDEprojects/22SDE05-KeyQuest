@@ -3,7 +3,6 @@ package com.game;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Set;
@@ -11,7 +10,7 @@ import java.util.Set;
 import static com.game.JSONParser.getStringArray;
 
 public class GameClient {
-    public static void main(String[] args) throws InterruptedException, IOException {
+    public static void main(String[] args) throws InterruptedException {
         JSONObject jsonObjectCommand = JSONParser.ReadJSON("command.json");
         JSONObject jsonObjectLocation = JSONParser.ReadJSON("location.json");
         JSONObject jsonObjectLocationStart = JSONParser.ReadJSON("locationv3.json");
