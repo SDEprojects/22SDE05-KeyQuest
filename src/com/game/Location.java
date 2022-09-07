@@ -5,7 +5,7 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 
-import static com.game.JSONParser.getStringArray;
+import static com.game.JSONParser.*;
 
 public class Location {
 
@@ -16,31 +16,15 @@ public class Location {
     private String[] door;
     private String[] character;
     private String[] directions;
-    private final String roomsKey = "rooms";
-
-    JSONObject jsonObjectLocation = JSONParser.ReadJSON("locationv3.json");
-    JSONObject rooms = jsonObjectLocation.getJSONObject(roomsKey);
 
     public Location(String name) {
         this.name = name;
-        String descriptionKey = "description";
-        String itemsKey = "items";
-        String furnitureKey = "furniture";
-        String doorKey = "door";
-        String characterKey = "character";
-        String directionsKey = "directions";
-        JSONObject information = rooms.getJSONObject(name);
-        description = information.getString(descriptionKey);
-        JSONArray itemsArray = information.getJSONArray(itemsKey);
-        items = getStringArray(itemsArray);
-        JSONArray furnitureArray = information.getJSONArray(furnitureKey);
-        furniture = getStringArray(furnitureArray);
-        JSONArray doorArray = information.getJSONArray(doorKey);
-        door = getStringArray(doorArray);
-        JSONArray characterArray = information.getJSONArray(characterKey);
-        character = getStringArray(characterArray);
-        JSONArray directionsArray = information.getJSONArray(directionsKey);
-        directions = getStringArray(directionsArray);
+        description = getLocationString(name, "description");
+        items = getLocationStringArray(name, "items");
+        furniture = getLocationStringArray(name, "furniture");
+        door = getLocationStringArray(name, "door");
+        character = getLocationStringArray(name, "character");
+        directions = getLocationStringArray(name, "directions");
     }
 
     public String getName() {

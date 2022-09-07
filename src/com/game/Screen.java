@@ -8,9 +8,10 @@ public class Screen {
            if(System.getProperty("os.name").contains("Windows")) {
                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
            } else {
-               Runtime.getRuntime().exec("clear");
+               new ProcessBuilder("clear").inheritIO().start().waitFor();
            }
-       } catch (IOException | InterruptedException ignored) {
+       } catch (IOException | InterruptedException e) {
+           throw new RuntimeException(e);
         }
     }
     public static void DivideScreen() {
