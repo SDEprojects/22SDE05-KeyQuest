@@ -3,7 +3,6 @@ package com.game;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Set;
@@ -11,12 +10,13 @@ import java.util.Set;
 import static com.game.JSONParser.getStringArray;
 
 public class GameClient {
-    public static void main(String[] args) throws InterruptedException, IOException {
+    public static void main(String[] args) throws InterruptedException {
         JSONObject jsonObjectCommand = JSONParser.ReadJSON("command.json");
         JSONObject jsonObjectLocation = JSONParser.ReadJSON("location.json");
         JSONObject jsonObjectLocationStart = JSONParser.ReadJSON("locationv3.json");
 
         TitlePage.title();
+        Screen.DivideScreen();
         String currentLocation = jsonObjectLocationStart.getString("startingRoom");
         String[] phrase;
 
@@ -25,6 +25,7 @@ public class GameClient {
         System.out.println(introduction.getPlayer());
         System.out.println(introduction.getObjective());
         System.out.println(introduction.getWin());
+        Screen.DivideScreen();
 
         while (true) {
             String firstCommand = GameManager.start();
@@ -39,15 +40,18 @@ public class GameClient {
                 System.out.println("List of available commands: " + keysCommand);
                 Set<String> keysLocation = JSONParser.getKeys(jsonObjectLocation);
                 System.out.println("List of available locations: " + keysLocation);
-                System.out.println();
+                Screen.DivideScreen();
                 do {
                     System.out.println("\nCurrent location is " + currentLocation);
+                    Screen.DivideScreen();
                     JSONArray listNextLocations = jsonObjectLocation.getJSONArray(currentLocation);
                     Location location = new Location(currentLocation);
                     System.out.println(location.getDescription());
-                    System.out.println("List of furniture: " + Arrays.toString(location.getFurniture()));
+                    System.out.println("\nList of furniture: " + Arrays.toString(location.getFurniture()));
                     System.out.println("List of items: " + Arrays.toString(location.getItems()));
+                    Screen.DivideScreen();
                     System.out.println("You can go to: " + listNextLocations);
+                    Screen.DivideScreen();
                     phrase = TextParser.read();
                     boolean isValidVerb = false;
                     boolean isValidLocation = false;
@@ -92,6 +96,7 @@ public class GameClient {
                         String confirmation = GameManager.confirmQuit();
                         if (Objects.equals(confirmation, "yes")) {
                             GameManager.quit();
+                            Screen.DivideScreen();
                             break;
                         } else if (Objects.equals(confirmation, "no")) {
                             phrase[0] = "start";
