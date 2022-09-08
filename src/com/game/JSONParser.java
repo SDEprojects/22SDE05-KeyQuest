@@ -16,6 +16,8 @@ public class JSONParser {
     static String startingRoom = jsonObjectLocation.getString("startingRoom");
     static String endingRoom = jsonObjectLocation.getString("endingRoom");
 
+    static JSONObject jsonObjectItem = JSONParser.ReadJSON("items.json");
+
     public static JSONObject ReadJSON(String fileName) {
 
         InputStream inputStream = JSONParser.class.getClassLoader().getResourceAsStream(fileName);
@@ -120,5 +122,18 @@ public class JSONParser {
 
     public static Set<String> getListOfLocations() {
         return JSONParser.getKeys(getRooms());
+    }
+
+    public static  String getItemName() {
+        return jsonObjectItem.getString("name");
+    }
+    public static String getItemRoom() {
+        return jsonObjectItem.getString("room");
+    }
+    public static String getItemFurniture() {
+        return jsonObjectItem.getString("furniture");
+    }
+    public static String getItemUsage(){
+        return jsonObjectItem.getString("usage");
     }
 }
