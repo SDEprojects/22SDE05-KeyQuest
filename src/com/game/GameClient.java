@@ -36,6 +36,8 @@ public class GameClient {
                 System.out.println("Type 'help' to get available commands, type 'look' to get list of things you are looking at.");
                 System.out.println("List of available commands: " + getKeyCommands());
                 System.out.println("List of available locations: " + getListOfLocations());
+                List<String> inventory = new ArrayList<>();
+
                 Screen.DivideScreen();
                 do {
                     System.out.println("\nCurrent location is " + currentLocation);
@@ -47,7 +49,7 @@ public class GameClient {
                     System.out.println("List of items: " + Arrays.toString(location.getItems()));
                     Screen.DivideScreen();
                     System.out.println("You can go to: " + Arrays.toString(listNextLocations));
-                    List<String> inventory = new ArrayList<>();
+
                     Screen.DivideScreen();
                     phrase = TextParser.read();
                     String item;
@@ -89,10 +91,17 @@ public class GameClient {
                             }
                         }
                     } else if (isValidItem) {
-                        inventory.add(phrase[1]);
-                        System.out.println(phrase[1]);
-                        System.out.println("Added " + phrase[1] + " to the inventory");
-                    }  else if (Objects.equals(phrase[0], "talk")) {
+                        if (inventory.contains(phrase[1])) {
+                            System.out.println("Inventory already has " + phrase[1]);
+                            System.out.println(inventory);
+                        } else {
+                            inventory.add(phrase[1]);
+                            System.out.println("Added " + phrase[1] + " to the inventory");
+                            System.out.println(inventory);
+                        }
+                    }  else if (Objects.equals(phrase[0], "inventory")) {
+                        System.out.println("List of inventory items " + inventory);
+                    } else if (Objects.equals(phrase[0], "talk")) {
                         System.out.println("\nWho would you like to talk to: " + Arrays.toString(location.getFurniture()));
                     } else if (Objects.equals(phrase[0], "help")) {
                         System.out.println("\nList of available commands: " + getKeyCommands());
@@ -108,6 +117,7 @@ public class GameClient {
                     } else {
                         System.out.println("Please try another command. Please type 'help' for more information.");
                     }
+
                 } while (!Objects.equals(phrase[0], "quit"));
                 break;
             }
