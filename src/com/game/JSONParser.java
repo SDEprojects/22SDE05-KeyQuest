@@ -10,11 +10,13 @@ import java.util.Set;
 public class JSONParser {
     static JSONObject jsonObjectIntroduction = JSONParser.ReadJSON("intro.json");
     static JSONObject jsonObjectLocation = JSONParser.ReadJSON("locationv3.json");
-
     static JSONObject jsonObjectCommand = JSONParser.ReadJSON("command.json");
+    static JSONObject jsonObjectSpeech = JSONParser.ReadJSON("speech.json");
+
     static JSONObject rooms = jsonObjectLocation.getJSONObject("rooms");
     static String startingRoom = jsonObjectLocation.getString("startingRoom");
     static String endingRoom = jsonObjectLocation.getString("endingRoom");
+    static JSONObject dogSpeech = jsonObjectSpeech.getJSONObject("dog");
 
     static JSONObject jsonObjectItem = JSONParser.ReadJSON("items.json");
 
@@ -111,6 +113,16 @@ public class JSONParser {
         return getStringArray(jsonArray);
     }
 
+    // The following work with Speech.java
+
+    public static Set<String> getCharacters() {
+        return JSONParser.getKeys(jsonObjectSpeech);
+    }
+    public static String getSpeech1 (String name) {
+        return dogSpeech.getString("speech1");
+    }
+
+
     public static Set<String> getKeyCommands() {
         return JSONParser.getKeys(jsonObjectCommand);
     }
@@ -136,5 +148,9 @@ public class JSONParser {
     }
     public static String getItemUsage(){
         return jsonObjectItem.getString("usage");
+    }
+
+    public static String getDogSpeech() {
+        return jsonObjectSpeech.getString("speech1");
     }
 }
