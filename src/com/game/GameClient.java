@@ -3,20 +3,16 @@ package com.game;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.Arrays;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
-import static com.game.JSONParser.getStringArray;
+import static com.game.JSONParser.*;
 
 public class GameClient {
     public static void main(String[] args) throws InterruptedException {
-        JSONObject jsonObjectCommand = JSONParser.ReadJSON("command.json");
-        JSONObject jsonObjectLocation = JSONParser.ReadJSON("location.json");
-        JSONObject jsonObjectLocationStart = JSONParser.ReadJSON("locationv3.json");
-
+        JSONObject jsonObjectCommand = getJsonObjectCommand();
         TitlePage.title();
-        String currentLocation = jsonObjectLocationStart.getString("startingRoom");
+        Screen.DivideScreen();
+        String currentLocation = getStartingRoom();
         String[] phrase;
 
         Introduction introduction = new Introduction();
@@ -24,45 +20,64 @@ public class GameClient {
         System.out.println(introduction.getPlayer());
         System.out.println(introduction.getObjective());
         System.out.println(introduction.getWin());
+        Screen.DivideScreen();
 
         while (true) {
             String firstCommand = GameManager.start();
+            Screen.ClearScreen();
             if (Objects.equals(firstCommand, "quit")) {
                 GameManager.quit();
                 break;
             }
             if (Objects.equals(firstCommand, "start")) {
                 System.out.println("Type 'help' to get available commands, type 'look' to get list of things you are looking at.");
-                Set<String> keysCommand = JSONParser.getKeys(jsonObjectCommand);
-                System.out.println("List of available commands: " + keysCommand);
-                Set<String> keysLocation = JSONParser.getKeys(jsonObjectLocation);
-                System.out.println("List of available locations: " + keysLocation);
-                System.out.println();
+                System.out.println("List of available commands: " + getKeyCommands());
+                System.out.println("List of available locations: " + getListOfLocations());
+                List<String> inventory = new ArrayList<>();
+
+
+                Screen.DivideScreen();
                 do {
                     System.out.println("\nCurrent location is " + currentLocation);
-                    JSONArray listNextLocations = jsonObjectLocation.getJSONArray(currentLocation);
+                    Screen.DivideScreen();
                     Location location = new Location(currentLocation);
+                    String[] listNextLocations = location.getDirections();
                     System.out.println(location.getDescription());
-                    System.out.println("List of furniture: " + Arrays.toString(location.getFurniture()));
+                    //System.out.println("\nList of furniture: " + Arrays.toString(location.getFurniture()));
                     System.out.println("List of items: " + Arrays.toString(location.getItems()));
-                    System.out.println("You can go to: " + listNextLocations);
+                    Screen.DivideScreen();
+                    System.out.println("You can go to: " + Arrays.toString(listNextLocations));
+
+                    Screen.DivideScreen();
                     phrase = TextParser.read();
+                    String item;
+                    Set<String> character = getCharacters();
                     boolean isValidVerb = false;
                     boolean isValidLocation = false;
-
+                    boolean isValidItem = false;
+                    boolean isValidCharacter = false;
+                    Screen.ClearScreen();
                     for (int i = 0; i < phrase.length; i++) {
                         if (phrase.length == 2) {
                             isValidVerb = jsonObjectCommand.has(phrase[0]);
-                            isValidLocation = jsonObjectLocation.has(phrase[1]);
+                            isValidLocation = getRooms().has(phrase[1]);
+                            for (int j = 0; j < getLocationItems(currentLocation).length; j++) {
+                                item = getLocationItems(currentLocation)[j];
+                                if (Objects.equals(item, phrase[1])) {
+                                    isValidItem = true;
+                                }
+                            }
+                            if (character.contains(phrase[1])) {
+                                isValidCharacter = true;
+                            }
                         } else if (phrase.length == 1) {
                             isValidVerb = jsonObjectCommand.has(phrase[0]);
                         }
                     }
                     if (isValidVerb && isValidLocation) {
                         JSONArray nextCommandsJsonArray = jsonObjectCommand.getJSONArray(phrase[0]);
-                        JSONArray nextLocationsJsonArray = jsonObjectLocation.getJSONArray(currentLocation);
+                        String[] nextLocations = location.getDirections();
                         String[] nextCommands = getStringArray(nextCommandsJsonArray);
-                        String[] nextLocations = getStringArray(nextLocationsJsonArray);
                         for (String nextLocation : nextLocations) {
                             if (Arrays.asList(nextLocations).contains(phrase[1]) && (Arrays.asList(nextCommands).contains(phrase[1]))) {
                                 currentLocation = phrase[1];
@@ -78,24 +93,49 @@ public class GameClient {
                                 break;
                             }
                         }
-                    } else if(Objects.equals(phrase[0], "look")) {
-                        System.out.println("\nYou are looking at: " + Arrays.toString(location.getFurniture()));
-                    }
-                    else if (Objects.equals(phrase[0], "help")) {
-                        System.out.println("\nList of available commands: " + keysCommand);
-                    } else if (Objects.equals(phrase[0], "quit")) {
-                        String confirmation = GameManager.confirmQuit();
-                        if (Objects.equals(confirmation, "yes")) {
-                            GameManager.quit();
-                            break;
-                        } else if (Objects.equals(confirmation, "no")) {
-                            phrase[0] = "start";
+                    } else if (isValidItem) {
+                        if (inventory.contains(phrase[1]) && isValidVerb) {
+                            System.out.println("Inventory already has " + phrase[1]);
+                            System.out.println(inventory);
+                        } else if ((inventory.contains(phrase[1]) && (Objects.equals(phrase[0], "drop")) || (inventory.contains(phrase[1]) && Objects.equals(phrase[0], "eat")) || (inventory.contains(phrase[1]) && Objects.equals(phrase[0], "throw")))) {
+                            inventory.remove(phrase[1]);
+                            System.out.println("Removed " + phrase[1] + " to the inventory");
+                            System.out.println(inventory);
+                        } else if (!inventory.contains(phrase[1]) && (Objects.equals(phrase[0], "drop") || Objects.equals(phrase[0], "eat") || Objects.equals(phrase[0], "throw"))) {
+                            System.out.println("Inventory doesn't  contain " + phrase[1]);
+                            System.out.println(inventory);
+                        } else {
+                            inventory.add(phrase[1]);
+                            System.out.println("Added " + phrase[1] + " to the inventory");
+                            System.out.println(inventory);
                         }
-                    } else {
-                        System.out.println("Please try another command. Please type 'help' for more information.");
+                    } else if (Objects.equals(phrase[0], "inventory")) {
+                        System.out.println("List of inventory items " + inventory);
+                    } else if (Objects.equals(phrase[0], "talk")) {
+                        System.out.println("\nWho would you like to talk to: " + getCharacters());
+                        if (isValidCharacter) {
+                            System.out.println("You are talking to " + phrase[1]);
+                            System.out.println(getSpeech1("speech1"));
+                        } else if (Objects.equals(phrase[0], "help")) {
+                            System.out.println("\nList of available commands: " + getKeyCommands());
+                        } else if (Objects.equals(phrase[0], "quit")) {
+                            String confirmation = GameManager.confirmQuit();
+                            if (Objects.equals(confirmation, "yes")) {
+                                GameManager.quit();
+                                Screen.DivideScreen();
+                                break;
+                            } else if (Objects.equals(confirmation, "no")) {
+                                phrase[0] = "start";
+                            }
+                        } else {
+                            System.out.println("Please try another command. Please type 'help' for more information.");
+                        }
+
                     }
-                } while (!Objects.equals(phrase[0], "quit"));
-                break;
+                }
+                    while (!Objects.equals(phrase[0], "quit")) ;
+                    break;
+
             }
         }
     }

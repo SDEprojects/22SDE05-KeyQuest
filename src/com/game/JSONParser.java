@@ -8,12 +8,23 @@ import java.io.InputStream;
 import java.util.Set;
 
 public class JSONParser {
+    static JSONObject jsonObjectIntroduction = JSONParser.ReadJSON("intro.json");
+    static JSONObject jsonObjectLocation = JSONParser.ReadJSON("locationv3.json");
+    static JSONObject jsonObjectCommand = JSONParser.ReadJSON("command.json");
+    static JSONObject jsonObjectSpeech = JSONParser.ReadJSON("speech.json");
 
-    public static JSONObject ReadJSON(String filepath) {
+    static JSONObject rooms = jsonObjectLocation.getJSONObject("rooms");
+    static String startingRoom = jsonObjectLocation.getString("startingRoom");
+    static String endingRoom = jsonObjectLocation.getString("endingRoom");
+    static JSONObject dogSpeech = jsonObjectSpeech.getJSONObject("dog");
 
-        InputStream inputStream = TextParser.class.getResourceAsStream(filepath);
+    static JSONObject jsonObjectItem = JSONParser.ReadJSON("items.json");
+
+    public static JSONObject ReadJSON(String fileName) {
+
+        InputStream inputStream = JSONParser.class.getClassLoader().getResourceAsStream(fileName);
         if (inputStream == null) {
-            throw new NullPointerException("Cannot find a file " + filepath);
+            throw new NullPointerException("Cannot find a file " + fileName);
         }
 
         JSONTokener jsonTokener = new JSONTokener(inputStream);
@@ -35,4 +46,110 @@ public class JSONParser {
         return jsonObject.keySet();
     }
 
+    public static JSONObject getRooms() {
+        return rooms;
+    }
+
+    public static String getStartingRoom() {
+        return startingRoom;
+    }
+
+    public static String getEndingRoom() {
+        return endingRoom;
+    }
+
+    public static JSONObject getJsonObjectCommand() {
+        return jsonObjectCommand;
+    }
+
+    public static String getIntroductionStory() {
+        return jsonObjectIntroduction.getString("story");
+    }
+
+    public static String getIntroductionPlayer() {
+        return jsonObjectIntroduction.getString("player");
+    }
+
+    public static String getIntroductionObjective() {
+        return jsonObjectIntroduction.getString("objective");
+    }
+
+    public static String getIntroductionWin() {
+        return jsonObjectIntroduction.getString("win");
+    }
+
+    public static String getLocationDescription (String name) {
+        JSONObject information = getRooms().getJSONObject(name);
+        return information.getString("description");
+    }
+
+    public static String[] getLocationItems (String name) {
+        JSONObject information = getRooms().getJSONObject(name);
+        JSONArray jsonArray = information.getJSONArray("items");
+        return getStringArray(jsonArray);
+    }
+
+    public static String[] getLocationFurniture (String name) {
+        JSONObject information = getRooms().getJSONObject(name);
+        JSONArray jsonArray = information.getJSONArray("furniture");
+        return getStringArray(jsonArray);
+    }
+
+    public static String[] getLocationDoor (String name) {
+        JSONObject information = getRooms().getJSONObject(name);
+        JSONArray jsonArray = information.getJSONArray("door");
+        return getStringArray(jsonArray);
+    }
+
+    public static String[] getLocationCharacter (String name) {
+        JSONObject information = getRooms().getJSONObject(name);
+        JSONArray jsonArray = information.getJSONArray("character");
+        return getStringArray(jsonArray);
+    }
+
+    public static String[] getLocationDirections(String name) {
+        JSONObject information = getRooms().getJSONObject(name);
+        JSONArray jsonArray = information.getJSONArray("directions");
+        return getStringArray(jsonArray);
+    }
+
+    // The following work with Speech.java
+
+    public static Set<String> getCharacters() {
+        return JSONParser.getKeys(jsonObjectSpeech);
+    }
+    public static String getSpeech1 (String name) {
+        return dogSpeech.getString("speech1");
+    }
+
+
+    public static Set<String> getKeyCommands() {
+        return JSONParser.getKeys(jsonObjectCommand);
+    }
+
+    public static String[] getCommands(String name) {
+        JSONArray jsonArray = jsonObjectCommand.getJSONArray(name);
+        return getStringArray(jsonArray);
+    }
+
+    public static Set<String> getListOfLocations() {
+        return JSONParser.getKeys(getRooms());
+    }
+
+    public static  String getItemName() {
+        return jsonObjectItem.getString("name");
+    }
+    public static String getItemRoom() {
+        return jsonObjectItem.getString("room");
+    }
+    public static String getItemFurniture() {
+        return jsonObjectItem.getString("furniture");
+    }
+    public static String getItemUsage(){
+        return jsonObjectItem.getString("usage");
+    }
+
+    public static String getDogSpeech() {
+        return jsonObjectSpeech.getString("speech1");
+    }
 }

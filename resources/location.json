@@ -5,11 +5,11 @@
   ],
   "kitchen": [
     "foyer",
-    "living",
+    "lounge",
     "loft",
     "bathroom"
   ],
-  "living": [
+  "lounge": [
     "foyer",
     "kitchen",
     "loft",
@@ -17,14 +17,14 @@
   ],
   "loft": [
     "kitchen",
-    "living",
+    "lounge",
     "garage"
   ],
   "bathroom": [
     "living",
-    "walkincloset"
+    "closet"
   ],
-  "walkincloset": [
+  "closet": [
     "bathroom"
   ],
   "garage": [

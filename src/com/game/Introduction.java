@@ -1,56 +1,27 @@
 package com.game;
 
-import org.json.JSONObject;
+import static com.game.JSONParser.*;
 
 public class Introduction {
-    private String story;
-    private String player;
-    private String objective;
-    private String win;
-
-    JSONObject jsonObjectIntroduction = JSONParser.ReadJSON("intro.json");
-
-    public Introduction() {
-        String storyKey = "story";
-        String playerKey = "player";
-        String objectiveKey = "objective";
-        String winKey = "win";
-        story = jsonObjectIntroduction.getString(storyKey);
-        player = jsonObjectIntroduction.getString(playerKey);
-        objective = jsonObjectIntroduction.getString(objectiveKey);
-        win = jsonObjectIntroduction.getString(winKey);
-    }
+    private final String story = getIntroductionStory();
+    private final String player = getIntroductionPlayer();
+    private final String objective = getIntroductionObjective();
+    private final String win = getIntroductionWin();
 
     public String getStory() {
         return story;
-    }
-
-    public void setStory(String story) {
-        this.story = story;
     }
 
     public String getPlayer() {
         return player;
     }
 
-    public void setPlayer(String player) {
-        this.player = player;
-    }
-
     public String getObjective() {
         return objective;
     }
 
-    public void setObjective(String objective) {
-        this.objective = objective;
-    }
-
     public String getWin() {
         return win;
-    }
-
-    public void setWin(String win) {
-        this.win = win;
     }
 
     @Override
