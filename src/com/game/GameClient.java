@@ -45,7 +45,7 @@ public class GameClient {
                     Location location = new Location(currentLocation);
                     String[] listNextLocations = location.getDirections();
                     System.out.println(location.getDescription());
-                    System.out.println("\nList of furniture: " + Arrays.toString(location.getFurniture()));
+                    //System.out.println("\nList of furniture: " + Arrays.toString(location.getFurniture()));
                     System.out.println("List of items: " + Arrays.toString(location.getItems()));
                     Screen.DivideScreen();
                     System.out.println("You can go to: " + Arrays.toString(listNextLocations));
@@ -91,15 +91,22 @@ public class GameClient {
                             }
                         }
                     } else if (isValidItem) {
-                        if (inventory.contains(phrase[1])) {
+                        if (inventory.contains(phrase[1]) && (!Objects.equals(phrase[0], "drop") || !Objects.equals(phrase[0], "eat") || !Objects.equals(phrase[0], "throw"))) {
                             System.out.println("Inventory already has " + phrase[1]);
+                            System.out.println(inventory);
+                        } else if (inventory.contains(phrase[1]) && (Objects.equals(phrase[0], "drop") || Objects.equals(phrase[0], "eat") || Objects.equals(phrase[0], "throw"))) {
+                            inventory.remove(phrase[1]);
+                            System.out.println("Removed " + phrase[1] + " to the inventory");
+                            System.out.println(inventory);
+                        } else if (!inventory.contains(phrase[1]) && (Objects.equals(phrase[0], "drop") || Objects.equals(phrase[0], "eat") || Objects.equals(phrase[0], "throw"))) {
+                            System.out.println("Inventory doesn't  contain " + phrase[1]);
                             System.out.println(inventory);
                         } else {
                             inventory.add(phrase[1]);
                             System.out.println("Added " + phrase[1] + " to the inventory");
                             System.out.println(inventory);
                         }
-                    }  else if (Objects.equals(phrase[0], "inventory")) {
+                    } else if (Objects.equals(phrase[0], "inventory")) {
                         System.out.println("List of inventory items " + inventory);
                     } else if (Objects.equals(phrase[0], "talk")) {
                         System.out.println("\nWho would you like to talk to: " + Arrays.toString(location.getFurniture()));
