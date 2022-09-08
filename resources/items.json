@@ -1,34 +1,32 @@
 {
-   "item":{
-    "chicken drumstick": {
-      "name": "chicken drumstick",
-      "room": "kitchen",
-      "furniture": "refrigerator",
-      "usage": "Throw it at the pets to distract them."
-    },
-    "cucumber": {
-      "name": "cucumber",
-      "room": "kitchen",
-      "furniture": "refrigerator",
-      "usage": "Throw it, to distract one of the pets"
-    },
-    "key": {
-      "name": "key",
-      "room": "garage",
-      "furniture": "shelf",
-      "usage": "Unlock the garden gates"
-    },
-    "leather shoes": {
-      "name": "leather shoes",
-      "room": "closet",
-      "furniture": "cabinet",
-      "usage": "Throw it, to distract one of the pets"
-    },
-    "ball of wool": {
-      "name": "ball of wool",
-      "room": "closet",
-      "furniture": "shelf",
-      "usage": "Throw it, to distract one of the pets"
-    }
+  "chicken drumstick": {
+    "name": "chicken drumstick",
+    "room": "kitchen",
+    "furniture": "refrigerator",
+    "usage": "Throw it at the pets to distract them."
+  },
+  "cucumber": {
+    "name": "cucumber",
+    "room": "kitchen",
+    "furniture": "refrigerator",
+    "usage": "Throw it, to distract one of the pets"
+  },
+  "key": {
+    "name": "key",
+    "room": "garage",
+    "furniture": "shelf",
+    "usage": "Unlock the garden gates"
+  },
+  "leather shoes": {
+    "name": "leather shoes",
+    "room": "closet",
+    "furniture": "cabinet",
+    "usage": "Throw it, to distract one of the pets"
+  },
+  "ball of wool": {
+    "name": "ball of wool",
+    "room": "closet",
+    "furniture": "shelf",
+    "usage": "Throw it, to distract one of the pets"
   }
 }
