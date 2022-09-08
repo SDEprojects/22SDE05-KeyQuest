@@ -4,7 +4,7 @@
   "rooms": {
     "foyer": {
       "name": "foyer",
-      "description": "You find yourself at the foyer, you can examine the cabinet, shelf, or hop towards the kitchen or the living room ",
+      "description": "You find yourself at the foyer, you can examine the cabinet, shelf, or hop towards the kitchen or the lounge",
       "items": [],
       "furniture": [
         "cabinet",
@@ -15,14 +15,8 @@
       ],
       "character": [],
       "directions": [
-        {
-          "directionName": "kitchen",
-          "room": "kitchen"
-        },
-        {
-          "directionName": "living Room",
-          "room": "living Room"
-        }
+        "kitchen",
+        "lounge"
       ]
     },
     "kitchen": {
@@ -43,23 +37,15 @@
       ],
       "character": [],
       "directions": [
-        {
-          "directionName": "living room",
-          "room": "living Room"
-        },
-        {
-          "directionName": "loft",
-          "room": "loft"
-        },
-        {
-          "directionName": "foyer",
-          "room": "foyer"
-        }
+        "foyer",
+        "lounge",
+        "loft",
+        "bathroom"
       ]
     },
-    "living": {
-      "name": "living",
-      "description": "You are in the Living Room...There is a creature that meows inside",
+    "lounge": {
+      "name": "lounge",
+      "description": "You are in the lounge...There is a creature that meows inside",
       "items": [],
       "furniture": [
         "table",
@@ -68,22 +54,10 @@
       "door": [],
       "character": [],
       "directions": [
-        {
-          "directionName": "foyer",
-          "room": "foyer"
-        },
-        {
-          "directionName": "kitchen",
-          "room": "kitchen"
-        },
-        {
-          "directionName": "loft",
-          "room": "loft"
-        },
-        {
-          "directionName": "bathroom",
-          "room": "bathroom"
-        }
+        "foyer",
+        "kitchen",
+        "loft",
+        "bathroom"
       ]
     },
     "bathroom": {
@@ -96,18 +70,12 @@
       "door": [],
       "character": [],
       "directions": [
-        {
-          "directionName": "living",
-          "room": "living"
-        },
-        {
-          "directionName": "walk-in-closet",
-          "room": "walk-in-closet"
-        }
+        "lounge",
+        "closet"
       ]
     },
-    "walkincloset": {
-      "name": "walk-in-closet",
+    "closet": {
+      "name": "closet",
       "description": "You are in the closet...I wonder what can be of use in here.",
       "items": [
         "leather shoes",
@@ -120,10 +88,7 @@
       "door": [],
       "character": [],
       "directions": [
-        {
-          "directionName": "bathroom",
-          "room": "bathroom"
-        }
+        "bathroom"
       ]
     },
     "loft": {
@@ -137,18 +102,9 @@
       "door": [],
       "character": [],
       "directions": [
-        {
-          "directionName": "kitchen",
-          "room": "kitchen"
-        },
-        {
-          "directionName": "living",
-          "room": "living room"
-        },
-        {
-          "directionName": "garage",
-          "room": "garage"
-        }
+        "kitchen",
+        "lounge",
+        "garage"
       ]
     },
     "garage": {
@@ -160,13 +116,13 @@
       "furniture": [
         "shelf"
       ],
-      "door": ["garage door"],
+      "door": [
+        "garage door"
+      ],
       "character": [],
       "directions": [
-        {
-          "directionName": "garage door",
-          "room": "garden"
-        }
+        "loft",
+        "garden"
       ]
     },
     "garden": {
@@ -177,10 +133,7 @@
       "door": [],
       "character": [],
       "directions": [
-        {
-          "directionName": "garage",
-          "room": "garage"
-        }
+        "garage"
       ]
     }
   }
