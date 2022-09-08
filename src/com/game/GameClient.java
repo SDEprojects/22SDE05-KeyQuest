@@ -3,10 +3,7 @@ package com.game;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 import static com.game.JSONParser.*;
 
@@ -38,6 +35,7 @@ public class GameClient {
                 System.out.println("List of available locations: " + getListOfLocations());
                 List<String> inventory = new ArrayList<>();
 
+
                 Screen.DivideScreen();
                 do {
                     System.out.println("\nCurrent location is " + currentLocation);
@@ -53,9 +51,11 @@ public class GameClient {
                     Screen.DivideScreen();
                     phrase = TextParser.read();
                     String item;
+                    Set<String> character = getCharacters();
                     boolean isValidVerb = false;
                     boolean isValidLocation = false;
                     boolean isValidItem = false;
+                    boolean isValidCharacter = false;
                     Screen.ClearScreen();
                     for (int i = 0; i < phrase.length; i++) {
                         if (phrase.length == 2) {
@@ -66,6 +66,9 @@ public class GameClient {
                                 if (Objects.equals(item, phrase[1])) {
                                     isValidItem = true;
                                 }
+                            }
+                            if (character.contains(phrase[1])) {
+                                isValidCharacter = true;
                             }
                         } else if (phrase.length == 1) {
                             isValidVerb = jsonObjectCommand.has(phrase[0]);
@@ -109,24 +112,30 @@ public class GameClient {
                     } else if (Objects.equals(phrase[0], "inventory")) {
                         System.out.println("List of inventory items " + inventory);
                     } else if (Objects.equals(phrase[0], "talk")) {
-                        System.out.println("\nWho would you like to talk to: " + Arrays.toString(location.getFurniture()));
-                    } else if (Objects.equals(phrase[0], "help")) {
-                        System.out.println("\nList of available commands: " + getKeyCommands());
-                    } else if (Objects.equals(phrase[0], "quit")) {
-                        String confirmation = GameManager.confirmQuit();
-                        if (Objects.equals(confirmation, "yes")) {
-                            GameManager.quit();
-                            Screen.DivideScreen();
-                            break;
-                        } else if (Objects.equals(confirmation, "no")) {
-                            phrase[0] = "start";
+                        System.out.println("\nWho would you like to talk to: " + getCharacters());
+                        if (isValidCharacter) {
+                            System.out.println("You are talking to " + phrase[1]);
+                            System.out.println(getSpeech1("speech1"));
+                        } else if (Objects.equals(phrase[0], "help")) {
+                            System.out.println("\nList of available commands: " + getKeyCommands());
+                        } else if (Objects.equals(phrase[0], "quit")) {
+                            String confirmation = GameManager.confirmQuit();
+                            if (Objects.equals(confirmation, "yes")) {
+                                GameManager.quit();
+                                Screen.DivideScreen();
+                                break;
+                            } else if (Objects.equals(confirmation, "no")) {
+                                phrase[0] = "start";
+                            }
+                        } else {
+                            System.out.println("Please try another command. Please type 'help' for more information.");
                         }
-                    } else {
-                        System.out.println("Please try another command. Please type 'help' for more information.");
-                    }
 
-                } while (!Objects.equals(phrase[0], "quit"));
-                break;
+                    }
+                }
+                    while (!Objects.equals(phrase[0], "quit")) ;
+                    break;
+
             }
         }
     }

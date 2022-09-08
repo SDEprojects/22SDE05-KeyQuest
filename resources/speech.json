@@ -1,0 +1,12 @@
+{
+    "dog": {
+  "speech1": "Bark! Bark! Bark!",
+  "speech2": "Are you an intruder?",
+  "speech3": "Have you been trying to take my bones?"
+},
+    "cat": {
+        "speech1": "Meow! Meow! Meow!",
+        "speech2": "My, you have a very fluffy tail!",
+        "speech3": "You seem like a very fluffy toy to play with my claws!"
+      }
+}
