@@ -4,19 +4,19 @@ import static com.game.JSONParser.getCommands;
 
 public class Command {
     private final String name;
-    private final String[] sameCommands;
+    private final String[] values;
 
     public Command(String name) {
         this.name = name;
-        sameCommands = getCommands(name);
+        values = getCommands(name);
     }
 
-    public String getName() {
+    public  String getName() {
         return name;
     }
 
-    public String[] getSameCommands() {
-        return sameCommands;
+    public String[] getValues() {
+        return values;
     }
 
     @Override

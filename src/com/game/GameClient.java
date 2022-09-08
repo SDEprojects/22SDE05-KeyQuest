@@ -3,7 +3,9 @@ package com.game;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 import static com.game.JSONParser.*;
@@ -45,15 +47,24 @@ public class GameClient {
                     System.out.println("List of items: " + Arrays.toString(location.getItems()));
                     Screen.DivideScreen();
                     System.out.println("You can go to: " + Arrays.toString(listNextLocations));
+                    List<String> inventory = new ArrayList<>();
                     Screen.DivideScreen();
                     phrase = TextParser.read();
+                    String item;
                     boolean isValidVerb = false;
                     boolean isValidLocation = false;
+                    boolean isValidItem = false;
                     Screen.ClearScreen();
                     for (int i = 0; i < phrase.length; i++) {
                         if (phrase.length == 2) {
                             isValidVerb = jsonObjectCommand.has(phrase[0]);
                             isValidLocation = getRooms().has(phrase[1]);
+                            for (int j = 0; j < getLocationItems(currentLocation).length; j++) {
+                                item = getLocationItems(currentLocation)[j];
+                                if (Objects.equals(item, phrase[1])) {
+                                    isValidItem = true;
+                                }
+                            }
                         } else if (phrase.length == 1) {
                             isValidVerb = jsonObjectCommand.has(phrase[0]);
                         }
@@ -77,13 +88,13 @@ public class GameClient {
                                 break;
                             }
                         }
-                    } else if(Objects.equals(phrase[0], "look")) {
-                        System.out.println("\nYou are looking at: " + Arrays.toString(location.getFurniture()));
-                    }
-                    else if(Objects.equals(phrase[0], "talk")) {
+                    } else if (isValidItem) {
+                        inventory.add(phrase[1]);
+                        System.out.println(phrase[1]);
+                        System.out.println("Added " + phrase[1] + " to the inventory");
+                    }  else if (Objects.equals(phrase[0], "talk")) {
                         System.out.println("\nWho would you like to talk to: " + Arrays.toString(location.getFurniture()));
-                    }
-                    else if (Objects.equals(phrase[0], "help")) {
+                    } else if (Objects.equals(phrase[0], "help")) {
                         System.out.println("\nList of available commands: " + getKeyCommands());
                     } else if (Objects.equals(phrase[0], "quit")) {
                         String confirmation = GameManager.confirmQuit();

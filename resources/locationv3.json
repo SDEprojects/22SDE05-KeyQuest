@@ -23,7 +23,7 @@
       "name": "kitchen",
       "description": "You are now inside the kitchen, here you may find some savory goods",
       "items": [
-        "chicken drumstick",
+        "drumstick",
         "cucumber"
       ],
       "furniture": [
