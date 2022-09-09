@@ -137,7 +137,8 @@ public class JSONParser {
     }
 
     public static  String getItemName() {
-        return jsonObjectItem.getString("name");
+       // return jsonObjectItem.getString("name");
+        JSONObject obj =
     }
     public static String getItemRoom() {
         return jsonObjectItem.getString("room");
