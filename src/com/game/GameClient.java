@@ -137,7 +137,6 @@ public class GameClient {
                 }
                     while (!Objects.equals(phrase[0], "quit")) ;
                     break;
-
             }
         }
     }
