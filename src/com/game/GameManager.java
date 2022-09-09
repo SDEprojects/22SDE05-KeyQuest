@@ -1,5 +1,6 @@
 package com.game;
 
+import java.io.FileOutputStream;
 import java.util.Scanner;
 
 public class GameManager {
@@ -27,4 +28,5 @@ public class GameManager {
         Scanner scanner = new Scanner(System.in);
         return scanner.nextLine();
     }
+
 }
