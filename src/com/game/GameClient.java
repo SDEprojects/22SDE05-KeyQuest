@@ -113,24 +113,26 @@ public class GameClient {
                         System.out.println("List of inventory items " + inventory);
                     } else if (Objects.equals(phrase[0], "talk")) {
                         System.out.println("\nWho would you like to talk to: " + getCharacters());
-                        if (isValidCharacter) {
+                        if (isValidCharacter && Objects.equals(phrase[1], "dog")) {
                             System.out.println("You are talking to " + phrase[1]);
-                            System.out.println(getSpeech1("speech1"));
-                        } else if (Objects.equals(phrase[0], "help")) {
-                            System.out.println("\nList of available commands: " + getKeyCommands());
-                        } else if (Objects.equals(phrase[0], "quit")) {
-                            String confirmation = GameManager.confirmQuit();
-                            if (Objects.equals(confirmation, "yes")) {
-                                GameManager.quit();
-                                Screen.DivideScreen();
-                                break;
-                            } else if (Objects.equals(confirmation, "no")) {
-                                phrase[0] = "start";
-                            }
-                        } else {
-                            System.out.println("Please try another command. Please type 'help' for more information.");
+                            System.out.println(getDogSpeech());
+                        } else if (isValidCharacter && Objects.equals(phrase[1], "cat")) {
+                            System.out.println("You are talking to " + phrase[1]);
+                            System.out.println(getCatSpeech());
                         }
-
+                    } else if (Objects.equals(phrase[0], "help")) {
+                        System.out.println("\nList of available commands: " + getKeyCommands());
+                    } else if (Objects.equals(phrase[0], "quit")) {
+                        String confirmation = GameManager.confirmQuit();
+                        if (Objects.equals(confirmation, "yes")) {
+                            GameManager.quit();
+                            Screen.DivideScreen();
+                            break;
+                        } else if (Objects.equals(confirmation, "no")) {
+                            phrase[0] = "start";
+                        }
+                    } else {
+                        System.out.println("Please try another command. Please type 'help' for more information.");
                     }
                 }
                     while (!Objects.equals(phrase[0], "quit")) ;
