@@ -1,8 +1,9 @@
 {
   "cucumber": "You can always eat it, but you can also throw it at one of the creatures",
-  "chicken drumstick": "Throw it at any creature, mewer or barker and you will buy some time for yourself.",
-  "leather shoes": "Can be used to distract a creature, which one? Just take a guess. ",
-  "ball of wool": "Can be used to distract a creature, which one? Use your commonsense. ",
+  "drumstick": "Throw it at any creature, mewer or barker and you will buy some time for yourself.",
+  "shoes": "Can be used to distract a creature, which one? Just take a guess. ",
+  "wool": "Can be used to distract a creature, which one? Use your commonsense. ",
+  "key": "Key unlocks garden.",
   "shelf": "",
   "cabinet": "",
   "refrigerator": ""

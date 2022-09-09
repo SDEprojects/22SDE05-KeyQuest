@@ -124,6 +124,14 @@ public class GameClient {
                         }
                     } else if (Objects.equals(phrase[0], "help")) {
                         System.out.println("\nList of available commands: " + getKeyCommands());
+                    } else if (Objects.equals(phrase[0], "look") ) {
+                        Set<String> listOfItems = getKeys(jsonObjectItem);
+                        if(listOfItems.contains(phrase[1])) {
+                            Item itemInformation = new Item(phrase[1]);
+                            System.out.println("You can find " + phrase[1] + " in " + itemInformation.getRoom());
+                            System.out.println(getLookItem(phrase[1]));
+                            System.out.println(itemInformation.getUsage());
+                        }
                     } else if (Objects.equals(phrase[0], "quit")) {
                         String confirmation = GameManager.confirmQuit();
                         if (Objects.equals(confirmation, "yes")) {
