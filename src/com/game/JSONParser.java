@@ -20,6 +20,7 @@ public class JSONParser {
 
     static JSONObject jsonObjectItem = JSONParser.ReadJSON("items.json");
 
+
     public static JSONObject ReadJSON(String fileName) {
 
         InputStream inputStream = JSONParser.class.getClassLoader().getResourceAsStream(fileName);
@@ -136,18 +137,21 @@ public class JSONParser {
         return JSONParser.getKeys(getRooms());
     }
 
-    public static  String getItemName() {
+   /* public static  String getItemName() {
        // return jsonObjectItem.getString("name");
         JSONObject obj =
+    }*/
+    public static String getItemRoom(String name) {
+        JSONObject information = jsonObjectItem.getJSONObject(name);
+        return information.getString("room");
     }
-    public static String getItemRoom() {
-        return jsonObjectItem.getString("room");
+    public static String getItemFurniture(String name) {
+        JSONObject information = jsonObjectItem.getJSONObject(name);
+        return information.getString("furniture");
     }
-    public static String getItemFurniture() {
-        return jsonObjectItem.getString("furniture");
-    }
-    public static String getItemUsage(){
-        return jsonObjectItem.getString("usage");
+    public static String getItemUsage(String name){
+        JSONObject information = jsonObjectItem.getJSONObject(name);
+        return information.getString("usage");
     }
 
     public static String getDogSpeech() {
