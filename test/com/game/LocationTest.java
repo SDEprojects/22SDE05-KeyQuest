@@ -32,6 +32,7 @@ class LocationTest {
         assertEquals(furniture,loc.getFurniture());*/
     }
 
+
     @Test
     void getDoor() {
     }
