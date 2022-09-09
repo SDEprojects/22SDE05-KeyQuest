@@ -17,7 +17,7 @@ public class JSONParser {
     static String startingRoom = jsonObjectLocation.getString("startingRoom");
     static String endingRoom = jsonObjectLocation.getString("endingRoom");
     static JSONObject dogSpeech = jsonObjectSpeech.getJSONObject("dog");
-
+    static JSONObject catSpeech = jsonObjectSpeech.getJSONObject("cat");
     static JSONObject jsonObjectItem = JSONParser.ReadJSON("items.json");
 
 
@@ -119,10 +119,33 @@ public class JSONParser {
     public static Set<String> getCharacters() {
         return JSONParser.getKeys(jsonObjectSpeech);
     }
-    public static String getSpeech1 (String name) {
-        return dogSpeech.getString("speech1");
+
+
+    public static String getDogSpeech () {
+        switch (getRandomNumber(3)) {
+            case 0:
+                return dogSpeech.getString("speech1");
+            case 1:
+                return dogSpeech.getString("speech2");
+            case 2:
+                return dogSpeech.getString("speech3");
+            default:
+                return "This is a dog";
+        }
     }
 
+    public static String getCatSpeech () {
+        switch (getRandomNumber(3)) {
+            case 0:
+                return catSpeech.getString("speech1");
+            case 1:
+                return catSpeech.getString("speech2");
+            case 2:
+                return catSpeech.getString("speech3");
+            default:
+                return "This is a cat";
+        }
+    }
 
     public static Set<String> getKeyCommands() {
         return JSONParser.getKeys(jsonObjectCommand);
@@ -154,7 +177,7 @@ public class JSONParser {
         return information.getString("usage");
     }
 
-    public static String getDogSpeech() {
-        return jsonObjectSpeech.getString("speech1");
+    public static int getRandomNumber(int numberOfKeys) {
+        return (int) (Math.random() * numberOfKeys + 1);
     }
 }
