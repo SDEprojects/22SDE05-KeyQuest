@@ -19,7 +19,7 @@ public class JSONParser {
     static JSONObject dogSpeech = jsonObjectSpeech.getJSONObject("dog");
     static JSONObject catSpeech = jsonObjectSpeech.getJSONObject("cat");
     static JSONObject jsonObjectItem = JSONParser.ReadJSON("items.json");
-
+    static JSONObject jsonObjectLook = JSONParser.ReadJSON("look.json");
 
     public static JSONObject ReadJSON(String fileName) {
 
@@ -177,5 +177,9 @@ public class JSONParser {
 
     public static int getRandomNumber(int numberOfKeys) {
         return (int) (Math.random() * numberOfKeys + 1);
+    }
+
+    public static String getLookItem(String name) {
+        return jsonObjectLook.getString(name);
     }
 }
