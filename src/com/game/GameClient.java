@@ -3,17 +3,23 @@ package com.game;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.*;
 import java.util.*;
 
 import static com.game.JSONParser.*;
 
 public class GameClient {
+
     public static void main(String[] args) throws InterruptedException {
         JSONObject jsonObjectCommand = getJsonObjectCommand();
         TitlePage.title();
         Screen.DivideScreen();
         String currentLocation = getStartingRoom();
         String[] phrase;
+        BufferedReader in;
+        String input;
+        String output = "";
+        in = new BufferedReader(new InputStreamReader(System.in));
 
         Introduction introduction = new Introduction();
         System.out.println(introduction.getStory());
@@ -29,6 +35,20 @@ public class GameClient {
                 GameManager.quit();
                 break;
             }
+
+            //Save and Load Work in Progress
+            /**
+            if (Objects.equals(firstCommand, "save")){
+                GameManager.saveGame();
+                GameManager.quit();
+                break;
+            }
+            if (Objects.equals(firstCommand, "load")){
+                GameManager.loadGame();
+                break;
+            }
+             **/
+
             if (Objects.equals(firstCommand, "start")) {
                 System.out.println("Type 'help' to get available commands, type 'look' to get list of things you are looking at.");
                 System.out.println("List of available commands: " + getKeyCommands());
