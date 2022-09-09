@@ -94,13 +94,15 @@ public class GameClient {
                             }
                         }
                     } else if (isValidItem) {
-                        if (inventory.contains(phrase[1]) && isValidVerb) {
+                        if ((inventory.contains(phrase[1]) && Objects.equals(phrase[0], "get")) || (inventory.contains(phrase[1]) && Objects.equals(phrase[0], "pick")) || (inventory.contains(phrase[1]) && Objects.equals(phrase[0], "collect") || (inventory.contains(phrase[1]) && Objects.equals(phrase[0], "grab")))) {
                             System.out.println("Inventory already has " + phrase[1]);
                             System.out.println(inventory);
-                        } else if ((inventory.contains(phrase[1]) && (Objects.equals(phrase[0], "drop")) || (inventory.contains(phrase[1]) && Objects.equals(phrase[0], "eat")) || (inventory.contains(phrase[1]) && Objects.equals(phrase[0], "throw")))) {
+                        } else if ((inventory.contains(phrase[1]) && Objects.equals(phrase[0], "drop")) || (inventory.contains(phrase[1]) && Objects.equals(phrase[0], "eat")) || (inventory.contains(phrase[1]) && Objects.equals(phrase[0], "throw"))) {
                             inventory.remove(phrase[1]);
                             System.out.println("Removed " + phrase[1] + " to the inventory");
                             System.out.println(inventory);
+                        } else if ((inventory.contains(phrase[1]) && !Objects.equals(phrase[0], "get")) || (inventory.contains(phrase[1]) && !Objects.equals(phrase[0], "pick")) || (inventory.contains(phrase[1]) && !Objects.equals(phrase[0], "collect")) || (inventory.contains(phrase[1]) && !Objects.equals(phrase[0], "grab"))) {
+                            System.out.println("Cannot " + phrase[0] + " " + phrase[1]);
                         } else if (!inventory.contains(phrase[1]) && (Objects.equals(phrase[0], "drop") || Objects.equals(phrase[0], "eat") || Objects.equals(phrase[0], "throw"))) {
                             System.out.println("Inventory doesn't  contain " + phrase[1]);
                             System.out.println(inventory);
@@ -135,8 +137,8 @@ public class GameClient {
                         System.out.println("Please try another command. Please type 'help' for more information.");
                     }
                 }
-                    while (!Objects.equals(phrase[0], "quit")) ;
-                    break;
+                while (!Objects.equals(phrase[0], "quit"));
+                break;
             }
         }
     }
