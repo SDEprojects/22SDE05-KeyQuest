@@ -21,9 +21,9 @@ public class Item {
     room = information.getString(roomKey);
     furniture = information.getString(furnitureKey);
     usage = information.getString(usageKey);*/
-        room =getItemRoom();
-        furniture=getItemFurniture();
-        usage= getItemUsage();
+        room =getItemRoom(name);
+        furniture=getItemFurniture(name);
+        usage= getItemUsage(name);
         //System.out.println(room);
     }
 
@@ -31,41 +31,21 @@ public class Item {
         return name;
     }
 
-   /* public void setName(String name) {
-        this.name = name;
-    }*/
-
     public String getRoom() {
         return room;
     }
 
-    /*public void setRoom(String room) {
-        this.room = room;
-    }
-*/
     public String getFurniture() {
         return furniture;
     }
 
-   /* public void setFurniture(String furniture) {
-        this.furniture = furniture;
-    }
-*/
     public String getUsage() {
         return usage;
     }
 
-    /*public void setUsage(String usage) {
-        this.usage = usage;
-    }*/
-
-    public JSONObject getJsonObjectItem() {
-        return jsonObjectItem;
-    }
-
     /*public void setJsonObjectItem(JSONObject jsonObjectItem) {
-        this.jsonObjectItem = jsonObjectItem;
-    }*/
+            this.jsonObjectItem = jsonObjectItem;
+        }*/
     @Override
     public String toString(){
         return "Item{" + "name" + name + "'\'" +
