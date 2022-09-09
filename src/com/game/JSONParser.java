@@ -129,9 +129,8 @@ public class JSONParser {
                 return dogSpeech.getString("speech2");
             case 2:
                 return dogSpeech.getString("speech3");
-            default:
-                return "This is a dog";
         }
+        return null;
     }
 
     public static String getCatSpeech () {
@@ -142,9 +141,8 @@ public class JSONParser {
                 return catSpeech.getString("speech2");
             case 2:
                 return catSpeech.getString("speech3");
-            default:
-                return "This is a cat";
         }
+        return null;
     }
 
     public static Set<String> getKeyCommands() {
