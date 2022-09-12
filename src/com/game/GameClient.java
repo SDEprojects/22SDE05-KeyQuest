@@ -111,14 +111,6 @@ public class GameClient {
                                 }
                                 currentLocation = phrase[1];
                                 break;
-                            } else if (Arrays.asList(characters).contains("cat") || Arrays.asList(characters).contains("dog")) {
-                                if(Arrays.asList(characters).contains("cat")) {
-                                    Character cat = new Character("cat");
-                                    System.out.println(cat.getDescription());
-                                } else if(Arrays.asList(characters).contains("dog")) {
-                                    Character dog = new Character("dog");
-                                    System.out.println(dog.getDescription());
-                                }
                             } else if (phrase[1].equals(currentLocation)) {
                                 System.out.println("Already in " + phrase[1]);
                                 break;

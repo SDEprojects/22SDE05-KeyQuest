@@ -52,7 +52,7 @@
         "sofa"
       ],
       "door": [],
-      "character": [],
+      "character": ["cat"],
       "directions": [
         "foyer",
         "kitchen",
@@ -86,7 +86,7 @@
         "shelf"
       ],
       "door": [],
-      "character": ["cat"],
+      "character": [],
       "directions": [
         "bathroom"
       ]
