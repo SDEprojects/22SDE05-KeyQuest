@@ -12,7 +12,8 @@ public class GameClient {
 
     public static void main(String[] args) throws InterruptedException {
         JSONObject jsonObjectCommand = getJsonObjectCommand();
-        TitlePage.title();
+        //TitlePage.title();
+        MsgArt.title();
         Screen.DivideScreen();
         String currentLocation = getStartingRoom();
         String[] phrase;
