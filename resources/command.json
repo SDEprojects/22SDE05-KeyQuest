@@ -91,5 +91,8 @@
   "talk": [
     "cat",
     "dog"
-  ]
+  ],
+  "help": [],
+  "inventory": [],
+  "look": []
 }
