@@ -3,5 +3,6 @@
   "objective": "\nYou must enter the house; go room to room and try to find the key. \nYou will need to distract the mewer and barker that live in the house with items you find in the house. \nIf you do not distract them, they will capture you and you loose the game.",
   "player": "\nYou are a rabbit trying to enter the garden.",
   "prompt": "You will need to find the key, and unlock the garden to win the game.\n",
-  "win": "Congratulations! You win the game!"
+  "win": "Congratulations! You win the game!",
+  "lose": "Game over. Good luck next time"
 }

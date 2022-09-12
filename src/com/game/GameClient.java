@@ -54,6 +54,8 @@ public class GameClient {
                 System.out.println("List of available commands: " + getKeyCommands());
                 System.out.println("List of available locations: " + getListOfLocations());
                 List<String> inventory = new ArrayList<>();
+                Character cat = new Character("cat");
+                Character dog = new Character("dog");
                 Screen.DivideScreen();
                 do {
                     System.out.println("\nCurrent location is " + currentLocation);
@@ -63,6 +65,13 @@ public class GameClient {
                     String[] characters = location.getCharacter();
                     System.out.println(location.getDescription());
                     //System.out.println("\nList of furniture: " + Arrays.toString(location.getFurniture()));
+                    if (characters.length != 0) {
+                        if (Arrays.asList(characters).contains("cat")) {
+                            System.out.println(cat.getDescription());
+                        } else if (Arrays.asList(characters).contains("dog")) {
+                            System.out.println(dog.getDescription());
+                        }
+                    }
                     System.out.println("List of items: " + Arrays.toString(location.getItems()));
                     Screen.DivideScreen();
                     System.out.println("You can go to: " + Arrays.toString(listNextLocations));
