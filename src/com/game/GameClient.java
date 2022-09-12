@@ -106,6 +106,8 @@ public class GameClient {
                         String[] nextLocations = location.getDirections();
                         String[] nextCommands = getStringArray(nextCommandsJsonArray);
                         for (String nextLocation : nextLocations) {
+                            Location nextRoomLocation = new Location(phrase[1]);
+                            String[] charactersInNextLocation = nextRoomLocation.getCharacter();
                             if (Arrays.asList(nextLocations).contains(phrase[1]) && (Arrays.asList(nextCommands).contains(phrase[1]))) {
                                 if (inventory.contains("key") && Objects.equals(currentLocation, "garage") && Objects.equals(phrase[1], "garden")) {
                                     System.out.println(introduction.getWin());
@@ -117,6 +119,15 @@ public class GameClient {
                                 } else if (!inventory.contains("key") && Objects.equals(currentLocation, "garage") && Objects.equals(phrase[1], "garden")) {
                                     System.out.println(introduction.getPrompt());
                                     break;
+                                } else if (inventory.isEmpty() && charactersInNextLocation.length !=0) {
+                                    System.out.println(introduction.getLose());
+                                    System.out.println("Get items to distract cat and dog first, before going to " + phrase[1]);
+                                    Screen.DivideScreen();
+                                    GameManager.quit();
+                                    phrase[0] = "quit";
+                                    break;
+                                } else if(!inventory.isEmpty()) {
+                                    System.out.println("Distract cat or dog, throw item.");
                                 }
                                 currentLocation = phrase[1];
                                 break;

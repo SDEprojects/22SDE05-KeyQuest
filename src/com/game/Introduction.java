@@ -8,6 +8,7 @@ public class Introduction {
     private final String objective = getIntroductionObjective();
     private final String prompt = getIntroductionPrompt();
     private final String win = getIntroductionWin();
+    private final String lose = getIntroductionLose();
 
     public String getStory() {
         return story;
@@ -27,6 +28,10 @@ public class Introduction {
 
     public String getWin() {
         return win;
+    }
+
+    public String getLose() {
+        return lose;
     }
 
     @Override

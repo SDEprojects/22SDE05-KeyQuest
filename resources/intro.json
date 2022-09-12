@@ -4,5 +4,5 @@
   "player": "\nYou are a rabbit trying to enter the garden.",
   "prompt": "You will need to find the key, and unlock the garden to win the game.\n",
   "win": "Congratulations! You win the game!",
-  "lose": "Game over. Good luck next time"
+  "lose": "Game over. Good luck next time!"
 }
