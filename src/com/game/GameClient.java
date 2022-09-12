@@ -60,6 +60,7 @@ public class GameClient {
                     Screen.DivideScreen();
                     Location location = new Location(currentLocation);
                     String[] listNextLocations = location.getDirections();
+                    String[] characters = location.getCharacter();
                     System.out.println(location.getDescription());
                     //System.out.println("\nList of furniture: " + Arrays.toString(location.getFurniture()));
                     System.out.println("List of items: " + Arrays.toString(location.getItems()));
@@ -110,6 +111,14 @@ public class GameClient {
                                 }
                                 currentLocation = phrase[1];
                                 break;
+                            } else if (Arrays.asList(characters).contains("cat") || Arrays.asList(characters).contains("dog")) {
+                                if(Arrays.asList(characters).contains("cat")) {
+                                    Character cat = new Character("cat");
+                                    System.out.println(cat.getDescription());
+                                } else if(Arrays.asList(characters).contains("dog")) {
+                                    Character dog = new Character("dog");
+                                    System.out.println(dog.getDescription());
+                                }
                             } else if (phrase[1].equals(currentLocation)) {
                                 System.out.println("Already in " + phrase[1]);
                                 break;
