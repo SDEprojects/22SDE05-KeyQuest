@@ -126,7 +126,7 @@ public class GameClient {
                                     GameManager.quit();
                                     phrase[0] = "quit";
                                     break;
-                                } else if(!inventory.isEmpty()) {
+                                } else if(!inventory.isEmpty() && characters.length != 0) {
                                     System.out.println("Distract cat or dog, throw item.");
                                 }
                                 currentLocation = phrase[1];
