@@ -20,6 +20,7 @@ public class JSONParser {
     static JSONObject catSpeech = jsonObjectSpeech.getJSONObject("cat");
     static JSONObject jsonObjectItem = JSONParser.ReadJSON("items.json");
     static JSONObject jsonObjectLook = JSONParser.ReadJSON("look.json");
+    static JSONObject jsonObjectCharacter = JSONParser.ReadJSON("character.json");
 
     public static JSONObject ReadJSON(String fileName) {
 
@@ -81,6 +82,9 @@ public class JSONParser {
 
     public static String getIntroductionWin() {
         return jsonObjectIntroduction.getString("win");
+    }
+    public static String getIntroductionLose() {
+        return jsonObjectIntroduction.getString("lose");
     }
 
     public static String getLocationDescription (String name) {
@@ -179,6 +183,11 @@ public class JSONParser {
         return information.getString("usage");
     }
 
+    public static Set<String> getAllItems() {
+        return JSONParser.getKeys(jsonObjectItem);
+    }
+
+
     public static int getRandomNumber(int numberOfKeys) {
         return (int) (Math.random() * numberOfKeys + 1);
     }
@@ -186,4 +195,22 @@ public class JSONParser {
     public static String getLookItem(String name) {
         return jsonObjectLook.getString(name);
     }
+
+    public static String getCharacterName(String character) {
+        JSONObject information  = jsonObjectCharacter.getJSONObject(character);
+        return information.getString("name");
+    }
+
+    public static String getCharacterDescription(String character) {
+        JSONObject information  = jsonObjectCharacter.getJSONObject(character);
+        return information.getString("description");
+    }
+
+    public static String[] getCharacterSpeech(String character) {
+        JSONObject information  = jsonObjectCharacter.getJSONObject(character);
+        JSONArray jsonArray = information.getJSONArray("speech");
+        return getStringArray(jsonArray);
+    }
+
+
 }
