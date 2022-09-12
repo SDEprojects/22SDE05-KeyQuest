@@ -75,12 +75,12 @@ public class JSONParser {
         return jsonObjectIntroduction.getString("objective");
     }
 
-    public static String getIntroductionWin() {
-        return jsonObjectIntroduction.getString("win");
+    public static String getIntroductionPrompt() {
+        return jsonObjectIntroduction.getString("prompt");
     }
 
-    public static String getIntroductionFinale() {
-        return jsonObjectIntroduction.getString("finale");
+    public static String getIntroductionWin() {
+        return jsonObjectIntroduction.getString("win");
     }
 
     public static String getLocationDescription (String name) {

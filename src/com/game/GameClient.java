@@ -54,8 +54,6 @@ public class GameClient {
                 System.out.println("List of available commands: " + getKeyCommands());
                 System.out.println("List of available locations: " + getListOfLocations());
                 List<String> inventory = new ArrayList<>();
-
-
                 Screen.DivideScreen();
                 do {
                     System.out.println("\nCurrent location is " + currentLocation);
@@ -100,14 +98,14 @@ public class GameClient {
                         for (String nextLocation : nextLocations) {
                             if (Arrays.asList(nextLocations).contains(phrase[1]) && (Arrays.asList(nextCommands).contains(phrase[1]))) {
                                 if (inventory.contains("key") && Objects.equals(currentLocation, "garage") && Objects.equals(phrase[1], "garden")) {
-                                    System.out.println(introduction.getFinale());
+                                    System.out.println(introduction.getWin());
                                     currentLocation = phrase[1];
                                     Screen.DivideScreen();
                                     GameManager.quit();
                                     phrase[0] = "quit";
                                     break;
                                 } else if (!inventory.contains("key") && Objects.equals(currentLocation, "garage") && Objects.equals(phrase[1], "garden")) {
-                                    System.out.println(introduction.getWin());
+                                    System.out.println(introduction.getPrompt());
                                     break;
                                 }
                                 currentLocation = phrase[1];
