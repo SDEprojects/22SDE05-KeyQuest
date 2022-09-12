@@ -79,6 +79,10 @@ public class JSONParser {
         return jsonObjectIntroduction.getString("win");
     }
 
+    public static String getIntroductionFinale() {
+        return jsonObjectIntroduction.getString("finale");
+    }
+
     public static String getLocationDescription (String name) {
         JSONObject information = getRooms().getJSONObject(name);
         return information.getString("description");
