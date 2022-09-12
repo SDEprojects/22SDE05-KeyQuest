@@ -12,7 +12,8 @@ public class GameClient {
 
     public static void main(String[] args) throws InterruptedException {
         JSONObject jsonObjectCommand = getJsonObjectCommand();
-        TitlePage.title();
+        //TitlePage.title();
+        MessageArt.title();
         Screen.DivideScreen();
         String currentLocation = getStartingRoom();
         Set<String> allItems = JSONParser.getAllItems();
@@ -115,6 +116,7 @@ public class GameClient {
                                     System.out.println(introduction.getWin());
                                     currentLocation = phrase[1];
                                     Screen.DivideScreen();
+                                    MessageArt.win();
                                     GameManager.quit();
                                     phrase[0] = "quit";
                                     break;
@@ -125,6 +127,7 @@ public class GameClient {
                                     System.out.println(introduction.getLose());
                                     System.out.println("Get items to distract cat and dog first, before going to " + phrase[1]);
                                     Screen.DivideScreen();
+                                    MessageArt.over();
                                     GameManager.quit();
                                     phrase[0] = "quit";
                                     break;

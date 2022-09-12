@@ -2,6 +2,8 @@ package com.game;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class LocationTest {
@@ -19,7 +21,7 @@ class LocationTest {
     void getItems() {
         String[] items = {"drumstick", "cucumber"};
         Location loc = new Location("kitchen");
-        assertEquals(items,loc.getItems());
+        assertEquals(Arrays.toString(items),Arrays.toString(loc.getItems()));
     }
 
     @Test
@@ -47,5 +49,10 @@ class LocationTest {
 
     @Test
     void testToString() {
+    }
+
+    public static void main(String[] args) {
+        Location loc = new Location("kitchen");
+        System.out.println(Arrays.toString(loc.getItems()));
     }
 }
