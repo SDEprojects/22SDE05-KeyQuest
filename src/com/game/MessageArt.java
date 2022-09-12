@@ -1,6 +1,6 @@
 package com.game;
 
-public class MsgArt {
+public class MessageArt {
     static String artWin =
                 "▓██   ██▓ ▒█████   █    ██     █     █░ ██▓ ███▄    █     ▐██▌ \n" +
                 " ▒██  ██▒▒██▒  ██▒ ██  ▓██▒   ▓█░ █ ░█░▓██▒ ██ ▀█   █     ▐██▌ \n" +
