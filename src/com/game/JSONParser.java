@@ -183,6 +183,11 @@ public class JSONParser {
         return information.getString("usage");
     }
 
+    public static Set<String> getAllItems() {
+        return JSONParser.getKeys(jsonObjectItem);
+    }
+
+
     public static int getRandomNumber(int numberOfKeys) {
         return (int) (Math.random() * numberOfKeys + 1);
     }
@@ -206,4 +211,6 @@ public class JSONParser {
         JSONArray jsonArray = information.getJSONArray("speech");
         return getStringArray(jsonArray);
     }
+
+
 }
