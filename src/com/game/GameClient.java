@@ -38,15 +38,15 @@ public class GameClient {
 
             //Save and Load Work in Progress
             /**
-            if (Objects.equals(firstCommand, "save")){
-                GameManager.saveGame();
-                GameManager.quit();
-                break;
-            }
-            if (Objects.equals(firstCommand, "load")){
-                GameManager.loadGame();
-                break;
-            }
+             if (Objects.equals(firstCommand, "save")){
+             GameManager.saveGame();
+             GameManager.quit();
+             break;
+             }
+             if (Objects.equals(firstCommand, "load")){
+             GameManager.loadGame();
+             break;
+             }
              **/
 
             if (Objects.equals(firstCommand, "start")) {
@@ -54,8 +54,6 @@ public class GameClient {
                 System.out.println("List of available commands: " + getKeyCommands());
                 System.out.println("List of available locations: " + getListOfLocations());
                 List<String> inventory = new ArrayList<>();
-
-
                 Screen.DivideScreen();
                 do {
                     System.out.println("\nCurrent location is " + currentLocation);
@@ -67,7 +65,6 @@ public class GameClient {
                     System.out.println("List of items: " + Arrays.toString(location.getItems()));
                     Screen.DivideScreen();
                     System.out.println("You can go to: " + Arrays.toString(listNextLocations));
-
                     Screen.DivideScreen();
                     phrase = TextParser.read();
                     String item;
@@ -100,6 +97,17 @@ public class GameClient {
                         String[] nextCommands = getStringArray(nextCommandsJsonArray);
                         for (String nextLocation : nextLocations) {
                             if (Arrays.asList(nextLocations).contains(phrase[1]) && (Arrays.asList(nextCommands).contains(phrase[1]))) {
+                                if (inventory.contains("key") && Objects.equals(currentLocation, "garage") && Objects.equals(phrase[1], "garden")) {
+                                    System.out.println(introduction.getWin());
+                                    currentLocation = phrase[1];
+                                    Screen.DivideScreen();
+                                    GameManager.quit();
+                                    phrase[0] = "quit";
+                                    break;
+                                } else if (!inventory.contains("key") && Objects.equals(currentLocation, "garage") && Objects.equals(phrase[1], "garden")) {
+                                    System.out.println(introduction.getPrompt());
+                                    break;
+                                }
                                 currentLocation = phrase[1];
                                 break;
                             } else if (phrase[1].equals(currentLocation)) {
@@ -131,7 +139,7 @@ public class GameClient {
                             System.out.println("Added " + phrase[1] + " to the inventory");
                             System.out.println(inventory);
                         }
-                    } else if (Objects.equals(phrase[0], "inventory")) {
+                    } else if (Objects.equals(phrase[0], "inventory") || (Objects.equals(phrase[0], "show") && Objects.equals(phrase[1], "inventory"))) {
                         System.out.println("List of inventory items " + inventory);
                     } else if (Objects.equals(phrase[0], "talk")) {
                         System.out.println("\nWho would you like to talk to: " + getCharacters());
@@ -144,9 +152,9 @@ public class GameClient {
                         }
                     } else if (Objects.equals(phrase[0], "help")) {
                         System.out.println("\nList of available commands: " + getKeyCommands());
-                    } else if (Objects.equals(phrase[0], "look") ) {
+                    } else if (Objects.equals(phrase[0], "look")) {
                         Set<String> listOfItems = getKeys(jsonObjectItem);
-                        if(listOfItems.contains(phrase[1])) {
+                        if (listOfItems.contains(phrase[1])) {
                             Item itemInformation = new Item(phrase[1]);
                             System.out.println("You can find " + phrase[1] + " in " + itemInformation.getRoom());
                             System.out.println(getLookItem(phrase[1]));

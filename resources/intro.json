@@ -2,5 +2,6 @@
   "story": "\nIn a quiet rural town, far-far away there was a little house. \n\nBeside the little house laid an enormous garden, abundant with vegetables and fruits. \nThe oasis of a garden was fenced around for its own good. \nTo feast on the forbidden food, little rabbit a path you must choose. \nFind the key within the little house to open the gated garden and consume the food. ",
   "objective": "\nYou must enter the house; go room to room and try to find the key. \nYou will need to distract the mewer and barker that live in the house with items you find in the house. \nIf you do not distract them, they will capture you and you loose the game.",
   "player": "\nYou are a rabbit trying to enter the garden.",
-  "win": "You will need to find the key, and unlock the garden to win the game.\n"
+  "prompt": "You will need to find the key, and unlock the garden to win the game.\n",
+  "win": "Congratulations! You won the game!"
 }

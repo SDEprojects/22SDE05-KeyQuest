@@ -75,6 +75,10 @@ public class JSONParser {
         return jsonObjectIntroduction.getString("objective");
     }
 
+    public static String getIntroductionPrompt() {
+        return jsonObjectIntroduction.getString("prompt");
+    }
+
     public static String getIntroductionWin() {
         return jsonObjectIntroduction.getString("win");
     }

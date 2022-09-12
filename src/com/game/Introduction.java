@@ -6,6 +6,7 @@ public class Introduction {
     private final String story = getIntroductionStory();
     private final String player = getIntroductionPlayer();
     private final String objective = getIntroductionObjective();
+    private final String prompt = getIntroductionPrompt();
     private final String win = getIntroductionWin();
 
     public String getStory() {
@@ -18,6 +19,10 @@ public class Introduction {
 
     public String getObjective() {
         return objective;
+    }
+
+    public String getPrompt() {
+        return prompt;
     }
 
     public String getWin() {
