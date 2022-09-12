@@ -1,32 +1,24 @@
 {
-  "characters": [
-    {
-      "name": "Robert Rabbit",
-      "type": "Rabbit",
-      "description": "A fluffy rabbit on a quest to find the keys to valley of carrots.",
-      "items": []
-    },
-    {
-      "name": "Diesel Dog",
-      "type": "Dog",
-      "description": "An alert dog watching out for lurking intruders.",
-      "items": [],
-      "speech": [
-        "Bark! Bark! Bark!",
-        "Are you an intruder?",
-        "Have you been trying to take my bones?"
-      ]
-    },
-    {
-      "name": "Cassie Cat",
-      "type": "Cat",
-      "description": "A curious and sneaky cat looking for the next toy to play and scratch with",
-      "items": [],
-      "speech": [
-        "Meow! Meow! Meow!",
-        "My, you have a very fluffy tail!",
-        "You seem like a very fluffy toy to play with my claws!"
-      ]
-    }
-  ]
+  "rabbit": {
+    "name": "Robert Rabbit",
+    "description": "A fluffy rabbit on a quest to find the keys to valley of carrots."
+  },
+  "dog": {
+    "name": "Diesel Dog",
+    "description": "An alert dog watching out for lurking intruders.",
+    "speech": [
+      "Bark! Bark! Bark!",
+      "Are you an intruder?",
+      "Have you been trying to take my bones?"
+    ]
+  },
+  "cat": {
+    "name": "Cassie Cat",
+    "description": "A curious and sneaky cat looking for the next toy to play and scratch with",
+    "speech": [
+      "Meow! Meow! Meow!",
+      "My, you have a very fluffy tail!",
+      "You seem like a very fluffy toy to play with my claws!"
+    ]
+  }
 }
