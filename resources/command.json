@@ -60,7 +60,6 @@
     "ball",
     "key"
   ],
-
   "collect": [
     "cucumber",
     "drumstick",
@@ -96,6 +95,8 @@
   "help": [],
   "inventory": [],
   "look": [],
+  "save": [],
+  "load": [],
   "throw": [
     "cucumber",
     "drumstick",
