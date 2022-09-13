@@ -94,5 +94,26 @@
   ],
   "help": [],
   "inventory": [],
-  "look": []
+  "look": [],
+  "throw": [
+    "cucumber",
+    "drumstick",
+    "shoe",
+    "ball",
+    "key"
+  ],
+  "drop": [
+    "cucumber",
+    "drumstick",
+    "shoe",
+    "ball",
+    "key"
+  ],
+  "eat": [
+    "cucumber",
+    "drumstick",
+    "shoe",
+    "ball",
+    "key"
+  ]
 }
