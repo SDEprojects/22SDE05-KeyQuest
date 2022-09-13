@@ -127,7 +127,10 @@ public class GameClient {
                                 } else if (!inventory.isEmpty() && charactersInNextLocation.length != 0) {
                                     System.out.println("Distract " + charactersInNextLocation[0]);
                                     Screen.DivideScreen();
+                                    Character characterToDistract = new Character(charactersInNextLocation[0]);
+                                    System.out.println(characterToDistract.getDescription());
                                     while(true) {
+                                        Screen.DivideScreen();
                                         System.out.println("Throw the item to distract " + charactersInNextLocation[0]);
                                         System.out.println("List of inventory items " + inventory);
                                         Screen.DivideScreen();
