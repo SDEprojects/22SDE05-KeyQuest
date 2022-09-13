@@ -12,7 +12,7 @@ public class GameClient {
 
     public static void main(String[] args) throws InterruptedException {
         JSONObject jsonObjectCommand = getJsonObjectCommand();
-        //TitlePage.title();
+        Screen.ClearScreen();
         MessageArt.title();
         Screen.DivideScreen();
         String currentLocation = getStartingRoom();
@@ -52,6 +52,7 @@ public class GameClient {
              **/
 
             if (Objects.equals(firstCommand, "start")) {
+                Screen.ClearScreen();
                 System.out.println("Type 'help' to get available commands, type 'look' to get list of things you are looking at.");
                 System.out.println("List of available commands: " + getKeyCommands());
                 System.out.println("List of available locations: " + getListOfLocations());
@@ -125,6 +126,19 @@ public class GameClient {
                                     break;
                                 } else if (!inventory.isEmpty() && charactersInNextLocation.length != 0) {
                                     System.out.println("Distract " + charactersInNextLocation[0]);
+                                    Screen.DivideScreen();
+                                    while(true) {
+                                        System.out.println("Throw the item to distract " + charactersInNextLocation[0]);
+                                        System.out.println("List of inventory items " + inventory);
+                                        Screen.DivideScreen();
+                                        phrase = TextParser.read();
+                                        if((Objects.equals(phrase[0], "throw") || Objects.equals(phrase[0], "drop")) && inventory.contains(phrase[1])) {
+                                            inventory.remove(phrase[1]);
+                                            Screen.ClearScreen();
+                                            System.out.println("You distracted " + charactersInNextLocation[0] + " and came to the next room " + nextRoomLocation.getName());
+                                            break;
+                                        }
+                                    }
                                 } else if (inventory.isEmpty() && charactersInNextLocation.length != 0) {
                                     System.out.println(introduction.getLose());
                                     System.out.println("Get items to distract cat and dog, before going to " + phrase[1]);
@@ -134,7 +148,7 @@ public class GameClient {
                                     phrase[0] = "quit";
                                     break;
                                 }
-                                currentLocation = phrase[1];
+                                currentLocation = String.valueOf(nextRoomLocation.getName());
                                 break;
                             } else if (phrase[1].equals(currentLocation)) {
                                 System.out.println("Already in " + phrase[1]);
