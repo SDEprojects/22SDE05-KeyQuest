@@ -125,7 +125,7 @@ public class GameClient {
                                     break;
                                 } else if (!inventory.isEmpty() && charactersInNextLocation.length != 0) {
                                     System.out.println("Distract " + charactersInNextLocation[0]);
-                                }  else if (inventory.isEmpty() && charactersInNextLocation.length != 0) {
+                                } else if (inventory.isEmpty() && charactersInNextLocation.length != 0) {
                                     System.out.println(introduction.getLose());
                                     System.out.println("Get items to distract cat and dog, before going to " + phrase[1]);
                                     Screen.DivideScreen();
@@ -133,8 +133,6 @@ public class GameClient {
                                     GameManager.quit();
                                     phrase[0] = "quit";
                                     break;
-                                } else if ((Objects.equals(phrase[0], "throw") || Objects.equals(phrase[0], "drop")) && inventory.contains(phrase[1]) && !Objects.equals(phrase[1], "key") && location.getCharacter().length != 0) {
-                                    System.out.println("You distracted " + charactersInNextLocation[0]);
                                 }
                                 currentLocation = phrase[1];
                                 break;
