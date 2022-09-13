@@ -100,7 +100,7 @@ public class MessageArt {
     public static void over() throws InterruptedException {
         for (int i = 0; i < artOver.length(); i++){
             System.out.print(artOver.charAt(i));
-            //  Thread.sleep(2);
+            Thread.sleep(2);
         }
         System.out.println("\nGame Over!");
     }

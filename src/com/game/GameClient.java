@@ -123,16 +123,18 @@ public class GameClient {
                                 } else if (!inventory.contains("key") && Objects.equals(currentLocation, "garage") && Objects.equals(phrase[1], "garden")) {
                                     System.out.println(introduction.getPrompt());
                                     break;
-                                } else if (inventory.isEmpty() && charactersInNextLocation.length != 0) {
+                                } else if (!inventory.isEmpty() && charactersInNextLocation.length != 0) {
+                                    System.out.println("Distract " + charactersInNextLocation[0]);
+                                }  else if (inventory.isEmpty() && charactersInNextLocation.length != 0) {
                                     System.out.println(introduction.getLose());
-                                    System.out.println("Get items to distract cat and dog first, before going to " + phrase[1]);
+                                    System.out.println("Get items to distract cat and dog, before going to " + phrase[1]);
                                     Screen.DivideScreen();
                                     MessageArt.over();
                                     GameManager.quit();
                                     phrase[0] = "quit";
                                     break;
-                                } else if (!inventory.isEmpty() && characters.length != 0) {
-                                    System.out.println("Distract cat or dog, throw item.");
+                                } else if ((Objects.equals(phrase[0], "throw") || Objects.equals(phrase[0], "drop")) && inventory.contains(phrase[1]) && !Objects.equals(phrase[1], "key") && location.getCharacter().length != 0) {
+                                    System.out.println("You distracted " + charactersInNextLocation[0]);
                                 }
                                 currentLocation = phrase[1];
                                 break;
@@ -151,20 +153,22 @@ public class GameClient {
                         if ((inventory.contains(phrase[1]) && Objects.equals(phrase[0], "get")) || (inventory.contains(phrase[1]) && Objects.equals(phrase[0], "pick")) || (inventory.contains(phrase[1]) && Objects.equals(phrase[0], "collect")) || (inventory.contains(phrase[1]) && Objects.equals(phrase[0], "grab"))) {
                             System.out.println("Inventory already has " + phrase[1]);
                             System.out.println(inventory);
-                        } else if ((inventory.contains(phrase[1]) && Objects.equals(phrase[0], "drop")) || (inventory.contains(phrase[1]) && Objects.equals(phrase[0], "eat")) || (inventory.contains(phrase[1]) && Objects.equals(phrase[0], "throw"))) {
+                        } else if (inventory.contains(phrase[1]) && (Objects.equals(phrase[0], "drop") || Objects.equals(phrase[0], "eat") || Objects.equals(phrase[0], "throw"))) {
                             inventory.remove(phrase[1]);
                             System.out.println(phrase[0] + " " + phrase[1] + " done");
                             System.out.println("Removed " + phrase[1] + " from the inventory");
-                            System.out.println(inventory);
-                        } else if ((inventory.contains(phrase[1]) && !Objects.equals(phrase[0], "get")) || (inventory.contains(phrase[1]) && !Objects.equals(phrase[0], "pick")) || (inventory.contains(phrase[1]) && !Objects.equals(phrase[0], "collect")) || (inventory.contains(phrase[1]) && !Objects.equals(phrase[0], "grab"))) {
-                            System.out.println("Cannot " + phrase[0] + " " + phrase[1]);
-                        } else if ((!inventory.contains(phrase[1]) && Objects.equals(phrase[0], "drop")) || (!inventory.contains(phrase[1]) && Objects.equals(phrase[0], "eat")) || (!inventory.contains(phrase[1]) && Objects.equals(phrase[0], "throw"))) {
-                            System.out.println("Inventory doesn't  contain " + phrase[1]);
                             System.out.println(inventory);
                         } else if ((!inventory.contains(phrase[1]) && Objects.equals(phrase[0], "get")) || (!inventory.contains(phrase[1]) && Objects.equals(phrase[0], "pick")) || (!inventory.contains(phrase[1]) && Objects.equals(phrase[0], "collect")) || (!inventory.contains(phrase[1]) && Objects.equals(phrase[0], "grab"))) {
                             inventory.add(phrase[1]);
                             System.out.println("Added " + phrase[1] + " to the inventory");
                             System.out.println(inventory);
+                        } else if (inventory.contains(phrase[1]) && (!Objects.equals(phrase[0], "get") || !Objects.equals(phrase[0], "pick") || !Objects.equals(phrase[0], "collect") || !Objects.equals(phrase[0], "grab"))) {
+                            System.out.println("Cannot " + phrase[0] + " " + phrase[1]);
+                        } else if ((!inventory.contains(phrase[1]) && Objects.equals(phrase[0], "drop")) || (!inventory.contains(phrase[1]) && Objects.equals(phrase[0], "eat")) || (!inventory.contains(phrase[1]) && Objects.equals(phrase[0], "throw"))) {
+                            System.out.println("Inventory doesn't  contain " + phrase[1]);
+                            System.out.println(inventory);
+                        } else {
+                            System.out.println("Cannot " + phrase[0] + " " + phrase[1]);
                         }
                     } else if ((Objects.equals(phrase[0], "inventory") || (Objects.equals(phrase[0], "show") && Objects.equals(phrase[1], "inventory")))) {
                         System.out.println("List of inventory items " + inventory);
@@ -199,7 +203,7 @@ public class GameClient {
                         } else if (Objects.equals(confirmation, "no")) {
                             phrase[0] = "start";
                         }
-                    } else if ((inventory.contains(phrase[1]) && Objects.equals(phrase[0], "drop")) || (inventory.contains(phrase[1]) && Objects.equals(phrase[0], "eat")) || (inventory.contains(phrase[1]) && Objects.equals(phrase[0], "throw"))) {
+                    } else if (phrase.length == 2 && ((inventory.contains(phrase[1]) && (Objects.equals(phrase[0], "drop") || Objects.equals(phrase[0], "eat") || Objects.equals(phrase[0], "throw"))))) {
                         inventory.remove(phrase[1]);
                         System.out.println(phrase[0] + " " + phrase[1] + " done");
                         System.out.println("Removed " + phrase[1] + " to the inventory");
