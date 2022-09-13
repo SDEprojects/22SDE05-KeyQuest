@@ -129,13 +129,13 @@ public class GameClient {
                                     Screen.DivideScreen();
                                     Character characterToDistract = new Character(charactersInNextLocation[0]);
                                     System.out.println(characterToDistract.getDescription());
-                                    while(true) {
+                                    while (true) {
                                         Screen.DivideScreen();
                                         System.out.println("Throw the item to distract " + charactersInNextLocation[0]);
                                         System.out.println("List of inventory items " + inventory);
                                         Screen.DivideScreen();
                                         phrase = TextParser.read();
-                                        if((Objects.equals(phrase[0], "throw") || Objects.equals(phrase[0], "drop")) && inventory.contains(phrase[1])) {
+                                        if ((Objects.equals(phrase[0], "throw") || Objects.equals(phrase[0], "drop")) && inventory.contains(phrase[1])) {
                                             inventory.remove(phrase[1]);
                                             Screen.ClearScreen();
                                             System.out.println("You distracted " + charactersInNextLocation[0] + " and came to the next room " + nextRoomLocation.getName());
