@@ -5,7 +5,7 @@
   },
   "dog": {
     "name": "Diesel Dog",
-    "description": "An alert dog watching out for lurking intruders.",
+    "description": "An alert dog watching out for lurking intruders. You can try talking to it.",
     "speech": [
       "Bark! Bark! Bark!",
       "Are you an intruder?",
@@ -14,7 +14,7 @@
   },
   "cat": {
     "name": "Cassie Cat",
-    "description": "A curious and sneaky cat looking for the next toy to play and scratch with.",
+    "description": "A curious and sneaky cat looking for the next toy to play and scratch with. You can try talking to it.",
     "speech": [
       "Meow! Meow! Meow!",
       "My, you have a very fluffy tail!",

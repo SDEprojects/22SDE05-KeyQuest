@@ -27,3 +27,6 @@ hs_err_pid*
 out/
 
 .DS_Store
+
+# Test log generated file.
+output.txt

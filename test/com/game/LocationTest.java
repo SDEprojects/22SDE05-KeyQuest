@@ -23,6 +23,12 @@ class LocationTest {
         Location loc = new Location("kitchen");
         assertEquals(Arrays.toString(items),Arrays.toString(loc.getItems()));
     }
+    @Test
+    void getItemsCloset() {
+        String[] items = {"wool", "shoes"};
+        Location loc = new Location("closet");
+        assertEquals(Arrays.toString(items),Arrays.toString(loc.getItems()));
+    }
 
     @Test
     public void getFurniture() {
