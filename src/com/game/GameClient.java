@@ -3,25 +3,19 @@ package com.game;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.*;
 import java.util.*;
 
 import static com.game.JSONParser.*;
 
-public class GameClient {
+public class GameClient implements java.io.Serializable {
 
     public static void main(String[] args) throws InterruptedException {
         JSONObject jsonObjectCommand = getJsonObjectCommand();
         TitlePage.title();
         Screen.DivideScreen();
         String currentLocation = getStartingRoom();
-        Set<String> allItems = JSONParser.getAllItems();
+        Set<String> allItems = getAllItems();
         String[] phrase;
-        BufferedReader in;
-        String input;
-        String output = "";
-        in = new BufferedReader(new InputStreamReader(System.in));
-
         Introduction introduction = new Introduction();
         System.out.println(introduction.getStory());
         System.out.println(introduction.getPlayer());
@@ -36,19 +30,9 @@ public class GameClient {
                 GameManager.quit();
                 break;
             }
-
-            //Save and Load Work in Progress
-            /**
-             if (Objects.equals(firstCommand, "save")){
-             GameManager.saveGame();
-             GameManager.quit();
-             break;
-             }
-             if (Objects.equals(firstCommand, "load")){
-             GameManager.loadGame();
-             break;
-             }
-             **/
+            if (Objects.equals(firstCommand, "load")){
+                GameManager.loadGame();
+            }
 
             if (Objects.equals(firstCommand, "start")) {
                 System.out.println("Type 'help' to get available commands, type 'look' to get list of things you are looking at.");
@@ -57,7 +41,7 @@ public class GameClient {
                 List<String> inventory = new ArrayList<>();
                 Character cat = new Character("cat");
                 Character dog = new Character("dog");
-                Set<String> listOfItems = JSONParser.getAllItems();
+                Set<String> listOfItems = getAllItems();
                 Screen.DivideScreen();
                 do {
                     System.out.println("\nCurrent location is " + currentLocation);
@@ -103,7 +87,14 @@ public class GameClient {
                             isValidVerb = jsonObjectCommand.has(phrase[0]);
                         }
                     }
-                    if (isValidVerb && isValidLocation) {
+                    if (Objects.equals(phrase[0], "save")) {
+                        GameManager.saveGame();
+                        break;
+                    }
+                    else if (Objects.equals(phrase[0], "load")) {
+                        GameManager.loadGame();
+                    }
+                    else if (isValidVerb && isValidLocation) {
                         JSONArray nextCommandsJsonArray = jsonObjectCommand.getJSONArray(phrase[0]);
                         String[] nextLocations = location.getDirections();
                         String[] nextCommands = getStringArray(nextCommandsJsonArray);

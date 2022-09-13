@@ -1,10 +1,14 @@
 package com.game;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 public class GameManager {
 
-    //static Game game;
+    static GameClient game;
 
     public static String start() {
         System.out.println("Would you like to start the game? Enter 'start' to start, 'quit' to exit \n>>> ");
@@ -19,8 +23,12 @@ public class GameManager {
         System.out.println("Game closed");
     }
 
-    //Save and Load Work in Progress
-    /**
+    public static String confirmQuit() {
+        System.out.println("Confirm exit the game? Enter 'yes' to confirm exit, 'no' to return \n>>> ");
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextLine();
+    }
+
     static void saveGame(){
         try{
             FileOutputStream fos = new FileOutputStream("Key.sav");
@@ -29,29 +37,22 @@ public class GameManager {
             oos.flush();
             oos.close();
             System.out.println("Game Saved!\n");
-            Thread.sleep(50);
         } catch (Exception e) {
             System.out.println("Error! Can't save data. \n"
                     + e.getClass() + ": " + e.getMessage() + "\n");
         }
     }
-   static void loadGame(){
+    static void loadGame(){
         try {
-            FileInputStream fis = new FileInputStream("Key.save");
+            FileInputStream fis = new FileInputStream("Key.sav");
             ObjectInputStream ois = new ObjectInputStream(fis);
-            game = (Game) ois.readObject();
+            game = (GameClient) ois.readObject();
             ois.close();
             System.out.println("\n---Game Successfully Loaded!---\n");
         } catch (Exception e) {
             System.out.println("Error! Can't load data. \n");
             System.out.println(e.getClass() + ": " + e.getMessage() + "\n");
         }
-    }
-    **/
-    public static String confirmQuit() {
-        System.out.println("Confirm exit the game? Enter 'yes' to confirm exit, 'no' to return \n>>> ");
-        Scanner scanner = new Scanner(System.in);
-        return scanner.nextLine();
     }
 
     public static String look() {

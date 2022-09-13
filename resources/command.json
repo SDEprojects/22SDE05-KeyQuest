@@ -94,5 +94,7 @@
   ],
   "help": [],
   "inventory": [],
-  "look": []
+  "look": [],
+  "save": [],
+  "load": []
 }
