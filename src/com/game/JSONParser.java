@@ -17,8 +17,10 @@ public class JSONParser {
     static String startingRoom = jsonObjectLocation.getString("startingRoom");
     static String endingRoom = jsonObjectLocation.getString("endingRoom");
     static JSONObject dogSpeech = jsonObjectSpeech.getJSONObject("dog");
-
+    static JSONObject catSpeech = jsonObjectSpeech.getJSONObject("cat");
     static JSONObject jsonObjectItem = JSONParser.ReadJSON("items.json");
+    static JSONObject jsonObjectLook = JSONParser.ReadJSON("look.json");
+    static JSONObject jsonObjectCharacter = JSONParser.ReadJSON("character.json");
 
     public static JSONObject ReadJSON(String fileName) {
 
@@ -74,8 +76,15 @@ public class JSONParser {
         return jsonObjectIntroduction.getString("objective");
     }
 
+    public static String getIntroductionPrompt() {
+        return jsonObjectIntroduction.getString("prompt");
+    }
+
     public static String getIntroductionWin() {
         return jsonObjectIntroduction.getString("win");
+    }
+    public static String getIntroductionLose() {
+        return jsonObjectIntroduction.getString("lose");
     }
 
     public static String getLocationDescription (String name) {
@@ -118,10 +127,31 @@ public class JSONParser {
     public static Set<String> getCharacters() {
         return JSONParser.getKeys(jsonObjectSpeech);
     }
-    public static String getSpeech1 (String name) {
-        return dogSpeech.getString("speech1");
+
+
+    public static String getDogSpeech () {
+        switch (getRandomNumber(3)) {
+            case 0:
+                return dogSpeech.getString("speech1");
+            case 1:
+                return dogSpeech.getString("speech2");
+            case 2:
+                return dogSpeech.getString("speech3");
+        }
+        return null;
     }
 
+    public static String getCatSpeech () {
+        switch (getRandomNumber(3)) {
+            case 0:
+                return catSpeech.getString("speech1");
+            case 1:
+                return catSpeech.getString("speech2");
+            case 2:
+                return catSpeech.getString("speech3");
+        }
+        return null;
+    }
 
     public static Set<String> getKeyCommands() {
         return JSONParser.getKeys(jsonObjectCommand);
@@ -136,20 +166,51 @@ public class JSONParser {
         return JSONParser.getKeys(getRooms());
     }
 
-    public static  String getItemName() {
-        return jsonObjectItem.getString("name");
+   /* public static  String getItemName() {
+       // return jsonObjectItem.getString("name");
+        JSONObject obj =
+    }*/
+    public static String getItemRoom(String name) {
+        JSONObject information = jsonObjectItem.getJSONObject(name);
+        return information.getString("room");
     }
-    public static String getItemRoom() {
-        return jsonObjectItem.getString("room");
+    public static String getItemFurniture(String name) {
+        JSONObject information = jsonObjectItem.getJSONObject(name);
+        return information.getString("furniture");
     }
-    public static String getItemFurniture() {
-        return jsonObjectItem.getString("furniture");
-    }
-    public static String getItemUsage(){
-        return jsonObjectItem.getString("usage");
+    public static String getItemUsage(String name){
+        JSONObject information = jsonObjectItem.getJSONObject(name);
+        return information.getString("usage");
     }
 
-    public static String getDogSpeech() {
-        return jsonObjectSpeech.getString("speech1");
+    public static Set<String> getAllItems() {
+        return JSONParser.getKeys(jsonObjectItem);
     }
+
+
+    public static int getRandomNumber(int numberOfKeys) {
+        return (int) (Math.random() * numberOfKeys + 1);
+    }
+
+    public static String getLookItem(String name) {
+        return jsonObjectLook.getString(name);
+    }
+
+    public static String getCharacterName(String character) {
+        JSONObject information  = jsonObjectCharacter.getJSONObject(character);
+        return information.getString("name");
+    }
+
+    public static String getCharacterDescription(String character) {
+        JSONObject information  = jsonObjectCharacter.getJSONObject(character);
+        return information.getString("description");
+    }
+
+    public static String[] getCharacterSpeech(String character) {
+        JSONObject information  = jsonObjectCharacter.getJSONObject(character);
+        JSONArray jsonArray = information.getJSONArray("speech");
+        return getStringArray(jsonArray);
+    }
+
+
 }

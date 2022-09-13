@@ -40,7 +40,6 @@
         "foyer",
         "lounge",
         "loft",
-        "bathroom"
       ]
     },
     "lounge": {
@@ -52,7 +51,7 @@
         "sofa"
       ],
       "door": [],
-      "character": [],
+      "character": ["cat"],
       "directions": [
         "foyer",
         "kitchen",
@@ -78,8 +77,8 @@
       "name": "closet",
       "description": "You are in the closet...I wonder what can be of use in here.",
       "items": [
-        "leather shoes",
-        "ball of wool"
+        "shoes",
+        "wool"
       ],
       "furniture": [
         "cabinet",
@@ -100,7 +99,7 @@
         "sofa"
       ],
       "door": [],
-      "character": [],
+      "character": ["dog"],
       "directions": [
         "kitchen",
         "lounge",

@@ -2,50 +2,50 @@
   "go": [
     "foyer",
     "kitchen",
-    "living",
+    "lounge",
     "loft",
     "bathroom",
-    "walkincloset",
+    "closet",
     "garage",
     "garden"
   ],
   "run": [
     "foyer",
     "kitchen",
-    "living",
+    "lounge",
     "loft",
     "bathroom",
-    "walkincloset",
+    "closet",
     "garage",
     "garden"
   ],
   "move": [
     "foyer",
     "kitchen",
-    "living",
+    "lounge",
     "loft",
     "bathroom",
-    "walkincloset",
+    "closet",
     "garage",
     "garden"
   ],
   "walk": [
     "foyer",
     "kitchen",
-    "living",
+    "lounge",
     "loft",
     "bathroom",
-    "walkincloset",
+    "closet",
     "garage",
     "garden"
   ],
   "jump": [
     "foyer",
     "kitchen",
-    "living",
+    "lounge",
     "loft",
     "bathroom",
-    "walkincloset",
+    "closet",
     "garage",
     "garden"
   ],
@@ -91,5 +91,31 @@
   "talk": [
     "cat",
     "dog"
+  ],
+  "help": [],
+  "inventory": [],
+  "look": [],
+  "save": [],
+  "load": [],
+  "throw": [
+    "cucumber",
+    "drumstick",
+    "shoe",
+    "ball",
+    "key"
+  ],
+  "drop": [
+    "cucumber",
+    "drumstick",
+    "shoe",
+    "ball",
+    "key"
+  ],
+  "eat": [
+    "cucumber",
+    "drumstick",
+    "shoe",
+    "ball",
+    "key"
   ]
 }

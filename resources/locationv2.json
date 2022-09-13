@@ -15,8 +15,8 @@
           "room": "Kitchen"
         },
         {
-          "directionName": "Living Room",
-          "room": "Living Room"
+          "directionName": "Lounge",
+          "room": "Lounge"
         }
       ]
     },
@@ -29,8 +29,8 @@
       "character": [],
       "directions": [
         {
-          "directionName": "Living Room",
-          "room": "Living Room"
+          "directionName": "Lounge",
+          "room": "Lounge"
         },
         {
           "directionName": "Loft",
@@ -43,7 +43,7 @@
       ]
     },
     {
-      "name": "Living Room",
+      "name": "Lounge",
       "description": "You are in the Living Room...There is a creature that meows inside",
       "items": [],
       "furniture": ["Table", "Sofa"],
@@ -75,17 +75,17 @@
       "character": [],
       "directions": [
         {
-          "directionName": "Living Room",
-          "room": "Living Room"
+          "directionName": "Lounge",
+          "room": "Lounge"
         },
         {
-          "directionName": "Walk-in-Closet",
-          "room": "Walk-in-Closet"
+          "directionName": "Closet",
+          "room": "Closet"
         }
       ]
     },
     {
-      "name": "Walk-in-closet",
+      "name": "Closet",
       "description": "You are in the closet...I wonder what can be of use in here.",
       "items": ["Leather Shoes", "Ball of wool"],
       "furniture": ["Cabinet", "Shelf"],
@@ -109,8 +109,8 @@
           "room": "Kitchen"
         },
         {
-          "directionName": "Living Room",
-          "room": "Living Room"
+          "directionName": "Lounge",
+          "room": "Lounge"
         },
         {
           "directionName": "Garage",

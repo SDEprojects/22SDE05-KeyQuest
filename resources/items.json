@@ -1,6 +1,6 @@
 {
-  "chicken drumstick": {
-    "name": "chicken drumstick",
+  "drumstick": {
+    "name": "drumstick",
     "room": "kitchen",
     "furniture": "refrigerator",
     "usage": "Throw it at the pets to distract them."
@@ -17,14 +17,14 @@
     "furniture": "shelf",
     "usage": "Unlock the garden gates"
   },
-  "leather shoes": {
-    "name": "leather shoes",
+  "shoes": {
+    "name": "shoes",
     "room": "closet",
     "furniture": "cabinet",
     "usage": "Throw it, to distract one of the pets"
   },
-  "ball of wool": {
-    "name": "ball of wool",
+  "wool": {
+    "name": "wool",
     "room": "closet",
     "furniture": "shelf",
     "usage": "Throw it, to distract one of the pets"
