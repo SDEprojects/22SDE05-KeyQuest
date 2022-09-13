@@ -76,7 +76,7 @@ public class GameClient {
                             System.out.println(dog.getDescription());
                         }
                     }
-                    System.out.println("List of items: " + Arrays.toString(location.getItems()));
+                    System.out.println("Items that can be found in this room: " + Arrays.toString(location.getItems()));
                     Screen.DivideScreen();
                     System.out.println("You can go to: " + Arrays.toString(listNextLocations));
                     Screen.DivideScreen();
@@ -132,13 +132,13 @@ public class GameClient {
                                     while (true) {
                                         Screen.DivideScreen();
                                         System.out.println("Throw the item to distract " + charactersInNextLocation[0]);
-                                        System.out.println("List of inventory items " + inventory);
+                                        System.out.println("List of inventory items: " + inventory);
                                         Screen.DivideScreen();
                                         phrase = TextParser.read();
                                         if ((Objects.equals(phrase[0], "throw") || Objects.equals(phrase[0], "drop")) && inventory.contains(phrase[1])) {
                                             inventory.remove(phrase[1]);
                                             Screen.ClearScreen();
-                                            System.out.println("You distracted " + charactersInNextLocation[0] + " and came to the next room " + nextRoomLocation.getName());
+                                            System.out.println("You distracted: " + charactersInNextLocation[0] + " and came to the next room: " + nextRoomLocation.getName());
                                             break;
                                         }
                                     }
@@ -165,7 +165,7 @@ public class GameClient {
                             }
                         }
                     } else if (isValidItem) {
-                        if ((inventory.contains(phrase[1]) && Objects.equals(phrase[0], "get")) || (inventory.contains(phrase[1]) && Objects.equals(phrase[0], "pick")) || (inventory.contains(phrase[1]) && Objects.equals(phrase[0], "collect")) || (inventory.contains(phrase[1]) && Objects.equals(phrase[0], "grab"))) {
+                        if ((inventory.contains(phrase[1]) && Objects.equals(phrase[0], "get")) || (inventory.contains(phrase[1]) && Objects.equals(phrase[0], "pick")) || (inventory.contains(phrase[1]) && Objects.equals(phrase[0], "collect")) || (inventory.contains(phrase[1]) && Objects.equals(phrase[0], "grab")) || (inventory.contains(phrase[1]) && Objects.equals(phrase[0], "take"))) {
                             System.out.println("Inventory already has " + phrase[1]);
                             System.out.println(inventory);
                         } else if (inventory.contains(phrase[1]) && (Objects.equals(phrase[0], "drop") || Objects.equals(phrase[0], "eat") || Objects.equals(phrase[0], "throw"))) {
@@ -173,11 +173,11 @@ public class GameClient {
                             System.out.println(phrase[0] + " " + phrase[1] + " done");
                             System.out.println("Removed " + phrase[1] + " from the inventory");
                             System.out.println(inventory);
-                        } else if ((!inventory.contains(phrase[1]) && Objects.equals(phrase[0], "get")) || (!inventory.contains(phrase[1]) && Objects.equals(phrase[0], "pick")) || (!inventory.contains(phrase[1]) && Objects.equals(phrase[0], "collect")) || (!inventory.contains(phrase[1]) && Objects.equals(phrase[0], "grab"))) {
+                        } else if ((!inventory.contains(phrase[1]) && Objects.equals(phrase[0], "get")) || (!inventory.contains(phrase[1]) && Objects.equals(phrase[0], "pick")) || (!inventory.contains(phrase[1]) && Objects.equals(phrase[0], "collect")) || (!inventory.contains(phrase[1]) && Objects.equals(phrase[0], "grab")) || (!inventory.contains(phrase[1]) && Objects.equals(phrase[0], "take"))) {
                             inventory.add(phrase[1]);
                             System.out.println("Added " + phrase[1] + " to the inventory");
                             System.out.println(inventory);
-                        } else if (inventory.contains(phrase[1]) && (!Objects.equals(phrase[0], "get") || !Objects.equals(phrase[0], "pick") || !Objects.equals(phrase[0], "collect") || !Objects.equals(phrase[0], "grab"))) {
+                        } else if (inventory.contains(phrase[1]) && (!Objects.equals(phrase[0], "get") || !Objects.equals(phrase[0], "pick") || !Objects.equals(phrase[0], "collect") || !Objects.equals(phrase[0], "grab") || !Objects.equals(phrase[0], "take"))) {
                             System.out.println("Cannot " + phrase[0] + " " + phrase[1]);
                         } else if ((!inventory.contains(phrase[1]) && Objects.equals(phrase[0], "drop")) || (!inventory.contains(phrase[1]) && Objects.equals(phrase[0], "eat")) || (!inventory.contains(phrase[1]) && Objects.equals(phrase[0], "throw"))) {
                             System.out.println("Inventory doesn't  contain " + phrase[1]);
@@ -188,7 +188,7 @@ public class GameClient {
                     } else if ((Objects.equals(phrase[0], "inventory") || (Objects.equals(phrase[0], "show") && Objects.equals(phrase[1], "inventory")))) {
                         System.out.println("List of inventory items " + inventory);
                     } else if (Objects.equals(phrase[0], "talk")) {
-                        System.out.println("\nWho would you like to talk to: " + getCharacters());
+                        //System.out.println("\nWho would you like to talk to: " + getCharacters());
                         if (isValidCharacter && Objects.equals(phrase[1], "dog")) {
                             System.out.println("You are talking to " + phrase[1]);
                             System.out.println(getDogSpeech());
